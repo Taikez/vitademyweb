@@ -1,0 +1,2 @@
+Auth: CLERK
+UI: shadcn
