@@ -93,7 +93,7 @@ function MobileNavbar() {
             <Accordion type="single" collapsible>
               <AccordionItem value="item-1" className="py-2 px-10">
                 <AccordionTrigger className="text-md">
-                  Learnings
+                  VitaLearn
                 </AccordionTrigger>
                 <AccordionContent className="AccordionContent">
                   {learnings.map((learning) => (
@@ -104,7 +104,9 @@ function MobileNavbar() {
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-2" className="py-2 px-10">
-                <AccordionTrigger className="text-md">Events</AccordionTrigger>
+                <AccordionTrigger className="text-md">
+                  VitaConnect
+                </AccordionTrigger>
                 <AccordionContent className="AccordionContent">
                   {events.map((event) => (
                     <div className="px-10 py-5">
@@ -116,17 +118,12 @@ function MobileNavbar() {
             </Accordion>
             <a href="">
               <div className="py-5 px-10 border-t-2">
-                <h1 className="text-md">Shop</h1>
-              </div>
-            </a>
-            <a href="">
-              <div className="py-5 px-10 border-t-2">
-                <h1 className="text-md">Contact</h1>
+                <h1 className="text-md">VitaShop</h1>
               </div>
             </a>
             <a href="">
               <div className="py-5 px-10 border-t-2 border-b-2">
-                <h1 className="text-md">About</h1>
+                <h1 className="text-md">VitaStory</h1>
               </div>
             </a>
           </DrawerContent>

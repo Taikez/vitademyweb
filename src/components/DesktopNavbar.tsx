@@ -84,7 +84,7 @@ function DesktopNavbar() {
         <NavigationMenu className="text-2xl">
           <NavigationMenuList>
             <NavigationMenuItem>
-              <NavigationMenuTrigger>Learnings</NavigationMenuTrigger>
+              <NavigationMenuTrigger>VitaLearn</NavigationMenuTrigger>
               <NavigationMenuContent>
                 <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
                   {learnings.map((learning) => (
@@ -100,7 +100,7 @@ function DesktopNavbar() {
               </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <NavigationMenuTrigger>Events</NavigationMenuTrigger>
+              <NavigationMenuTrigger>VitaConnect</NavigationMenuTrigger>
               <NavigationMenuContent>
                 <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
                   {events.map((event) => (
@@ -118,21 +118,14 @@ function DesktopNavbar() {
             <NavigationMenuItem>
               <Link href="/shop" legacyBehavior passHref>
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  <p className="text-md">Shop</p>
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <Link href="/contact" legacyBehavior passHref>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  <p className="text-md">Contact</p>
+                  <p className="text-md">VitaShop</p>
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
             <NavigationMenuItem>
               <Link href="/about" legacyBehavior passHref>
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  <p className="text-md">About</p>
+                  <p className="text-md">VitaStory</p>
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>

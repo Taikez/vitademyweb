@@ -7,7 +7,7 @@ import { ReactTyped } from "react-typed";
 import { FaDiscord, FaWhatsapp, FaInstagram } from "react-icons/fa";
 import { SiX } from "react-icons/si";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper/modules";
+import { Autoplay, Navigation, Pagination, Scrollbar } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
@@ -20,6 +20,63 @@ const socialLinks = [
     color: "#E4405F",
   },
   { icon: <SiX />, url: "https://x.com", color: "#000000" },
+];
+
+const learningModules = [
+  {
+    imageURL: "/free_modules.jpg",
+    title: "Demo Module 1",
+    createdDate: "March 26, 2025",
+    creatorName: "Julian Nardita",
+  },
+  {
+    imageURL: "/free_modules.jpg",
+    title: "Demo Module 2",
+    createdDate: "March 26, 2025",
+    creatorName: "Julian Nardita",
+  },
+  {
+    imageURL: "/free_modules.jpg",
+    title: "Demo Module 3",
+    createdDate: "March 26, 2025",
+    creatorName: "Julian Nardita",
+  },
+  {
+    imageURL: "/free_modules.jpg",
+    title: "Demo Module 4",
+    createdDate: "March 26, 2025",
+    creatorName: "Julian Nardita",
+  },
+  {
+    imageURL: "/free_modules.jpg",
+    title: "Demo Module 5",
+    createdDate: "March 26, 2025",
+    creatorName: "Julian Nardita",
+  },
+  {
+    imageURL: "/free_modules.jpg",
+    title: "Demo Module 6",
+    createdDate: "March 26, 2025",
+    creatorName: "Julian Nardita",
+  },
+  {
+    imageURL: "/free_modules.jpg",
+    title: "Demo Module 7",
+    createdDate: "March 26, 2025",
+    creatorName: "Julian Nardita",
+  },
+  {
+    imageURL: "/free_modules.jpg",
+    title: "Demo Module 8",
+    createdDate: "March 26, 2025",
+    creatorName: "Julian Nardita",
+  },
+  {
+    imageURL: "/free_modules.jpg",
+    title: "Demo Module 9",
+    createdDate: "March 26, 2025",
+    creatorName: "Julian Nardita",
+  },
 ];
 
 export default function Home() {
@@ -226,7 +283,9 @@ export default function Home() {
                   using fun methods, real-life examples, and creative thinking
                   to understand things better and solve problems easily.
                 </p>
-                <Button>Learn More</Button>
+                <Link href="">
+                  <Button>Learn More</Button>
+                </Link>
               </div>
             </div>
             <div className="col-span-2 from-20% to-60% from-[#7efca0]/10 to-[#7efca0]/5 dark:from-[#5cff88]/20 dark:to-[#5cff88]/10 border-[#5cff88]/10 bg-gradient-to-b rounded-2xl border-2 p-10 grid grid-cols-2 gap-16">
@@ -240,7 +299,9 @@ export default function Home() {
                   lessons, activities, and resources — all at no cost. It's a
                   great way to start learning and discovering new ideas!
                 </p>
-                <Button>Start Learning</Button>
+                <Link href="">
+                  <Button>Start Learning</Button>
+                </Link>
               </div>
               <div>
                 <Image
@@ -260,7 +321,9 @@ export default function Home() {
                     Connect, learn, and grow with like-minded individuals
                     through our engaging events and workshops.
                   </p>
-                  <Button>I'm Interested</Button>
+                  <Link href="">
+                    <Button>I'm Interested</Button>
+                  </Link>
                 </div>
                 <div>
                   <Image
@@ -292,7 +355,9 @@ export default function Home() {
                   guidance. Whether you have questions or need direction, we're
                   here to help you every step of the way.
                 </p>
-                <Button>Meet Our Consultors</Button>
+                <Link href="">
+                  <Button>Meet Our Consultors</Button>
+                </Link>
               </div>
             </div>
             <div className="col-span-3 from-20% to-60% from-[#3492eb]/10 to-[#3492eb]/5 dark:from-[#17558f]/20 dark:to-[#7d5bb5]/10 border-[#17558f]/10 bg-gradient-to-b rounded-2xl border-2 p-15 grid grid-cols-2">
@@ -358,7 +423,9 @@ export default function Home() {
                         creative thinking to understand things better and solve
                         problems easily.
                       </p>
-                      <Button>Learn More</Button>
+                      <Link href="">
+                        <Button>Learn More</Button>
+                      </Link>
                     </div>
                   </div>
                 </SwiperSlide>
@@ -383,7 +450,9 @@ export default function Home() {
                         It's a great way to start learning and discovering new
                         ideas!
                       </p>
-                      <Button>Start Learning</Button>
+                      <Link href="">
+                        <Button>Start Learning</Button>
+                      </Link>
                     </div>
                   </div>
                 </SwiperSlide>
@@ -403,7 +472,9 @@ export default function Home() {
                         Connect, learn, and grow with like-minded individuals
                         through our engaging events and workshops.
                       </p>
-                      <Button>I'm Interested</Button>
+                      <Link href="">
+                        <Button>I'm Interested</Button>
+                      </Link>
                     </div>
                   </div>
                 </SwiperSlide>
@@ -425,7 +496,9 @@ export default function Home() {
                         guidance. Whether you have questions or need direction,
                         we're here to help you every step of the way.
                       </p>
-                      <Button>Meet Our Consultors</Button>
+                      <Link href="">
+                        <Button>Meet Our Consultors</Button>
+                      </Link>
                     </div>
                   </div>
                 </SwiperSlide>
@@ -449,11 +522,67 @@ export default function Home() {
                         interactive sessions from the comfort of your home — or
                         anywhere you choose.
                       </p>
-                      <Button>Learn Now</Button>
+                      <Link href="">
+                        <Button>Learn Now</Button>
+                      </Link>
                     </div>
                   </div>
                 </SwiperSlide>
               </Swiper>
+            </div>
+          </section>
+          <section>
+            <div className="flex flex-col gap-5">
+              <h1 className="text-4xl font-extrabold">Top Modules</h1>
+              <p className="text-lg mb-5">
+                Our top learning modules recommended for you
+              </p>
+              <p className="text-sm text-gray-600 dark:text-gray-400 italic mt-2">
+                Swipe me →
+              </p>
+              <div className="w-full">
+                <Swiper
+                  className="cursor-grab active:cursor-grabbing"
+                  modules={[Scrollbar]}
+                  spaceBetween={20}
+                  breakpoints={{
+                    640: { slidesPerView: 1 },
+                    768: { slidesPerView: 2 },
+                    1024: { slidesPerView: 3 },
+                  }}
+                >
+                  {learningModules.map((learningModule, index) => (
+                    <SwiperSlide key={index}>
+                      <Link href="" className="group">
+                        <div className="flex flex-col">
+                          <div className="relative overflow-hidden rounded-2xl">
+                            <Image
+                              src={learningModule.imageURL}
+                              alt="Learning Module Thumbnail"
+                              width={400}
+                              height={200}
+                              className="rounded-2xl ease-in-out duration-200 group-hover:scale-110"
+                            ></Image>
+                          </div>
+                          <div className="py-5">
+                            <h1 className="text-2xl font-bold group-hover:underline">
+                              {learningModule.title}
+                            </h1>
+                            <div className="py-5">
+                              <p className="italic">
+                                {learningModule.createdDate}
+                              </p>
+                              <p className="uppercase text-stone-400">
+                                {learningModule.creatorName}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </Link>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </div>
             </div>
           </section>
           <section>
