@@ -47,16 +47,45 @@ const events: { title: string; href: string; description: string }[] = [
       "Hands-on sessions where you can experiment, build, and learn through exciting activities.",
   },
   {
-    title: "Bootcamps",
-    href: "/event/bootcamps",
-    description:
-      "Intensive programs designed to boost your skills through focused learning and practice.",
-  },
-  {
     title: "Seminars",
     href: "/event/seminars",
     description:
       "Engaging talks and discussions led by experts to expand your knowledge and insights.",
+  },
+];
+
+const shops: { title: string; href: string; description: string }[] = [
+  {
+    title: "Products & Services",
+    href: "/shop/products-and-services",
+    description:
+      "Everything we offer — from brain-boosting content to cool community perks.",
+  },
+  {
+    title: "Merch",
+    href: "/shop/merch",
+    description:
+      "We have merch! 🎉 Wear your love for learning loud and proud!",
+  },
+];
+
+const stories: { title: string; href: string; description: string }[] = [
+  {
+    title: "About Vitademy",
+    href: "/story/about-vitademy",
+    description:
+      "Get to know the people, passion, and purpose behind Vitademy.",
+  },
+  {
+    title: "Contact",
+    href: "/story/contact",
+    description: "Questions, feedback, or just want to say hi? We’re all ears.",
+  },
+  {
+    title: "FAQ",
+    href: "/story/faq",
+    description:
+      "Got questions? We’ve got answers — quick, clear, and helpful.",
   },
 ];
 
@@ -115,17 +144,31 @@ function MobileNavbar() {
                   ))}
                 </AccordionContent>
               </AccordionItem>
+              <AccordionItem value="item-3" className="py-2 px-10">
+                <AccordionTrigger className="text-md">
+                  VitaShop
+                </AccordionTrigger>
+                <AccordionContent className="AccordionContent">
+                  {shops.map((shop) => (
+                    <div className="px-10 py-5">
+                      <a href={shop.href}>{shop.title}</a>
+                    </div>
+                  ))}
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-4" className="py-2 px-10">
+                <AccordionTrigger className="text-md">
+                  VitaStory
+                </AccordionTrigger>
+                <AccordionContent className="AccordionContent">
+                  {stories.map((story) => (
+                    <div className="px-10 py-5">
+                      <a href={story.href}>{story.title}</a>
+                    </div>
+                  ))}
+                </AccordionContent>
+              </AccordionItem>
             </Accordion>
-            <a href="">
-              <div className="py-5 px-10 border-t-2">
-                <h1 className="text-md">VitaShop</h1>
-              </div>
-            </a>
-            <a href="">
-              <div className="py-5 px-10 border-t-2 border-b-2">
-                <h1 className="text-md">VitaStory</h1>
-              </div>
-            </a>
           </DrawerContent>
         </Drawer>
       </div>

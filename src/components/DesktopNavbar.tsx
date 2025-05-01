@@ -6,7 +6,6 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
 } from "./ui/NavigationMenu";
 import Link from "next/link";
 import ModeToggle from "./ModeToggle";
@@ -56,16 +55,45 @@ const events: { title: string; href: string; description: string }[] = [
       "Hands-on sessions where you can experiment, build, and learn through exciting activities.",
   },
   {
-    title: "Bootcamps",
-    href: "/event/bootcamps",
-    description:
-      "Intensive programs designed to boost your skills through focused learning and practice.",
-  },
-  {
     title: "Seminars",
     href: "/event/seminars",
     description:
       "Engaging talks and discussions led by experts to expand your knowledge and insights.",
+  },
+];
+
+const shops: { title: string; href: string; description: string }[] = [
+  {
+    title: "Products & Services",
+    href: "/shop/products-and-services",
+    description:
+      "Everything we offer — from brain-boosting content to cool community perks.",
+  },
+  {
+    title: "Merch",
+    href: "/shop/merch",
+    description:
+      "We have merch! 🎉 Wear your love for learning loud and proud!",
+  },
+];
+
+const stories: { title: string; href: string; description: string }[] = [
+  {
+    title: "About Vitademy",
+    href: "/story/about-vitademy",
+    description:
+      "Get to know the people, passion, and purpose behind Vitademy.",
+  },
+  {
+    title: "Contact",
+    href: "/story/contact",
+    description: "Questions, feedback, or just want to say hi? We’re all ears.",
+  },
+  {
+    title: "FAQ",
+    href: "/story/faq",
+    description:
+      "Got questions? We’ve got answers — quick, clear, and helpful.",
   },
 ];
 
@@ -116,18 +144,36 @@ function DesktopNavbar() {
               </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link href="/shop" legacyBehavior passHref>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  <p className="text-md">VitaShop</p>
-                </NavigationMenuLink>
-              </Link>
+              <NavigationMenuTrigger>VitaShop</NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+                  {shops.map((shop) => (
+                    <ListItem
+                      key={shop.title}
+                      title={shop.title}
+                      href={shop.href}
+                    >
+                      {shop.description}
+                    </ListItem>
+                  ))}
+                </ul>
+              </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link href="/about" legacyBehavior passHref>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  <p className="text-md">VitaStory</p>
-                </NavigationMenuLink>
-              </Link>
+              <NavigationMenuTrigger>VitaStory</NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+                  {stories.map((story) => (
+                    <ListItem
+                      key={story.title}
+                      title={story.title}
+                      href={story.href}
+                    >
+                      {story.description}
+                    </ListItem>
+                  ))}
+                </ul>
+              </NavigationMenuContent>
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>

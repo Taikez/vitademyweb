@@ -7,7 +7,7 @@ import { ReactTyped } from "react-typed";
 import { FaDiscord, FaWhatsapp, FaInstagram } from "react-icons/fa";
 import { SiX } from "react-icons/si";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation, Pagination, Scrollbar } from "swiper/modules";
+import { Pagination, Scrollbar } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
@@ -110,7 +110,7 @@ export default function Home() {
             <Button className="w-50 mt-5">Get Started</Button>
           </section>
           <section className="grid grid-cols-2 lg:grid-cols-4 gap-10 mb-16">
-            <Link href="/learn/modules">
+            <Link href="/learn/articles">
               <div className="lg:flex items-center gap-3.5 lg:flex-row lg:text-start text-center flex flex-col [&_.body]:text-center group">
                 <div className="header relative grid aspect-square size-[5em] shrink-0 place-items-center rounded-2xl border shadow-svg-button-link transition-all duration-200 group-hover:shadow-svg-button-link-hover group-hover:transition-all group-hover:duration-200 group-focus:shadow-none group-focus:transition-all group-focus:duration-200">
                   <svg
@@ -137,13 +137,13 @@ export default function Home() {
                 </div>
                 <div>
                   <p className="font-black text-lg text-[#6A0DAD] dark:text-[#D8B4FE] transition-all group-hover:text-[#A855F7] dark:group-hover:text-[#e3cff8]">
-                    Browse Modules
+                    Browse Articles
                   </p>
                   <p>Explore topics that interest you.</p>
                 </div>
               </div>
             </Link>
-            <Link href="/learn/lessons">
+            <Link href="/learn/modules">
               <div className="lg:flex items-center gap-3.5 lg:flex-row lg:text-start text-center flex flex-col [&_.body]:text-center group">
                 <div className="header relative grid aspect-square size-[5em] shrink-0 place-items-center rounded-2xl border shadow-svg-button-link transition-all duration-200 group-hover:shadow-svg-button-link-hover group-hover:transition-all group-hover:duration-200 group-focus:shadow-none group-focus:transition-all group-focus:duration-200">
                   <svg
@@ -173,7 +173,7 @@ export default function Home() {
                 </div>
                 <div>
                   <p className="font-black text-lg text-[#F59E0B] transition-all group-hover:text-[#FBBF24] dark:group-hover:text-[#FCD34D]">
-                    Interactive Lessons
+                    Interactive Modules
                   </p>
                   <p>Learn through fun activities.</p>
                 </div>
@@ -299,7 +299,7 @@ export default function Home() {
                   lessons, activities, and resources — all at no cost. It's a
                   great way to start learning and discovering new ideas!
                 </p>
-                <Link href="">
+                <Link href="/learn/modules">
                   <Button>Start Learning</Button>
                 </Link>
               </div>
@@ -321,7 +321,7 @@ export default function Home() {
                     Connect, learn, and grow with like-minded individuals
                     through our engaging events and workshops.
                   </p>
-                  <Link href="">
+                  <Link href="/event/workshops">
                     <Button>I'm Interested</Button>
                   </Link>
                 </div>
@@ -450,7 +450,7 @@ export default function Home() {
                         It's a great way to start learning and discovering new
                         ideas!
                       </p>
-                      <Link href="">
+                      <Link href="/learn/modules">
                         <Button>Start Learning</Button>
                       </Link>
                     </div>
@@ -472,7 +472,7 @@ export default function Home() {
                         Connect, learn, and grow with like-minded individuals
                         through our engaging events and workshops.
                       </p>
-                      <Link href="">
+                      <Link href="/event/workshops">
                         <Button>I'm Interested</Button>
                       </Link>
                     </div>
