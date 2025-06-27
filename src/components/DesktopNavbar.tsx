@@ -15,6 +15,7 @@ import {
   SignInButton,
   SignUpButton,
   UserButton,
+  useUser,
 } from "@clerk/nextjs";
 import { Button } from "./ui/Button";
 import Image from "next/image";
@@ -98,6 +99,9 @@ const stories: { title: string; href: string; description: string }[] = [
 ];
 
 function DesktopNavbar() {
+  const { user } = useUser();
+  const isAdmin = (user?.publicMetadata as { isAdmin?: boolean })?.isAdmin;
+
   return (
     <div className="flex justify-between items-center">
       <div className="flex gap-6 items-center">
@@ -175,6 +179,35 @@ function DesktopNavbar() {
                 </ul>
               </NavigationMenuContent>
             </NavigationMenuItem>
+            {isAdmin && (
+              <NavigationMenuItem>
+                <NavigationMenuTrigger>VitaMin</NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+                    <ListItem key="" title="Dashboard" href="/admin/dashboard">
+                      Cool kids only
+                    </ListItem>
+                    <ListItem key="" title="Add Module" href="/admin/dashboard">
+                      Add modules for VitaLearn
+                    </ListItem>
+                    <ListItem
+                      key=""
+                      title="Add Article"
+                      href="/admin/dashboard"
+                    >
+                      Add articles for VitaLearn
+                    </ListItem>
+                    <ListItem
+                      key=""
+                      title="Add Shop Item"
+                      href="/admin/dashboard"
+                    >
+                      Add shop items for VitaShop
+                    </ListItem>
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+            )}
           </NavigationMenuList>
         </NavigationMenu>
       </div>

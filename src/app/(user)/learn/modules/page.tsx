@@ -12,6 +12,8 @@ import { useEffect, useState } from "react";
 export default function Modules() {
   const [modules, setModules] = useState<Module[]>([]);
   interface Module {
+    id: string;
+    slug: string;
     imageURL: string;
     title: string;
     createdDate: string;
@@ -215,7 +217,7 @@ export default function Modules() {
               </div>
             </section>
             {planets.map((planet) => (
-              <section id="mathematics" key={planet.name}>
+              <section id={planet.name} key={planet.name}>
                 <h1 className="text-3xl font-black mb-8">{planet.longName}</h1>
                 <div className="flex flex-col gap-4 leading-relaxed">
                   <p>{planet.description}</p>
@@ -241,7 +243,13 @@ export default function Modules() {
                         ) // Filter modules by planet
                         .map((module, index) => (
                           <SwiperSlide key={index}>
-                            <Link href="" className="group">
+                            <Link
+                              href={`/learn/modules/${encodeURIComponent(
+                                module.slug
+                              )}`}
+                              className="group"
+                            >
+                              {" "}
                               <div className="flex flex-col">
                                 <div className="relative overflow-hidden rounded-2xl">
                                   <Image

@@ -1,2 +1,6 @@
 Auth: CLERK
 UI: shadcn
+
+Admin Dummy
+vitamin
+V!t4m1n123
