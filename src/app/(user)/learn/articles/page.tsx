@@ -1,9 +1,8 @@
+import MaintenancePage from "@/components/MaintenancePage";
 import { Button } from "@/components/ui/Button";
 import {
   Card,
-  CardAction,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -130,6 +129,10 @@ const articles = [
 ];
 
 export default function page() {
+  if (process.env.NEXT_PUBLIC_MAINTENANCE_MODE === "true") {
+    return <MaintenancePage />;
+  }
+
   return (
     <div className=" p-10 md:py-20 md:px-30">
       <div className="flex flex-col gap-10">

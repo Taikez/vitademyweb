@@ -8,6 +8,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { useEffect, useState } from "react";
+import MaintenancePage from "@/components/MaintenancePage";
 
 export default function Modules() {
   const [modules, setModules] = useState<Module[]>([]);
@@ -87,6 +88,9 @@ export default function Modules() {
     SMA: ["Kelas 10", "Kelas 11", "Kelas 12"],
   };
 
+  if (process.env.NEXT_PUBLIC_MAINTENANCE_MODE === "true") {
+    return <MaintenancePage />;
+  }
   return (
     <div>
       <div className="relative h-[192px] w-full md:h-[256px] lg:h-[320px] xl:h-[576px] 2xl:h-[672px]">
