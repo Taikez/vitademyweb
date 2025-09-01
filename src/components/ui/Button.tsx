@@ -10,7 +10,14 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground shadow-xs hover:bg-primary/90",
+          "group relative bg-transparent text-foreground border border-2 border-black/60 dark:border-white/60 rounded-xl " +
+          "h-[50px] flex items-center justify-center gap-2 shadow-xs " +
+          // smooth animation
+          "transition-all duration-300 ease-out " +
+          // hover: single color (#8C58FF) for all modes
+          "hover:text-[#32078E] hover:border-[#8C58FF] hover:shadow-[0.5px_0.5px_0_0_#8C58FF] dark:hover:text-[#8C58FF] dark:hover:border-[#8C58FF] dark:hover:shadow-[0.5px_0.5px_0_0_#8C58FF] " +
+          // focus styles
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/20 dark:focus-visible:ring-white/20",
         destructive:
           "bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40",
         outline:
@@ -19,11 +26,13 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        vitademy:
+          "bg-[#6946a1] text-white hover:bg-white hover:text-primary-foreground hover:border-[#6946a1] dark:bg-[#D8B4FE] dark:text-[#6946a1] dark:hover:bg-[#6946a1] dark:hover:text-[#D8B4FE] dark-hover:border-white shadow-xs",
       },
       size: {
-        default: "h-9 px-4 py-2 has-[>svg]:px-3",
+        default: "h-9 px-12 py-5 has-[>svg]:px-3 text-lg",
         sm: "h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5",
-        lg: "h-10 rounded-md px-6 has-[>svg]:px-4",
+        lg: "h-10 rounded-lg p-8 has-[>svg]:p-6 text-md font-bold",
         icon: "size-9",
       },
     },

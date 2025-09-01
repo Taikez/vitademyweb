@@ -10,6 +10,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Scrollbar } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
+import CategoryBadge from "@/components/ui/CategoryBadge";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/Accordion";
 
 const socialLinks = [
   { icon: <FaDiscord />, url: "https://dsc.gg/vitademy", color: "#5865F2" },
@@ -79,6 +86,39 @@ const learningModules = [
   },
 ];
 
+const faqs = [
+  {
+    id: "1",
+    question: "What is Vitademy and how does it work?",
+    answer:
+      "Vitademy is a decentralised learning platform offering an extensive range of interactive resources, and community-driven discussions — all designed for you to learn at your own pace.",
+  },
+  {
+    id: "2",
+    question: "Is Vitademy free to use?",
+    answer:
+      "We offer open access to many resources, forums, and events. Some premium features or personalised consultations may require payment.",
+  },
+  {
+    id: "3",
+    question: "How is Vitademy different from other online learning platforms?",
+    answer:
+      "Vitademy is decentralised — meaning no central authority dictates your pace or access. You control your learning, contribute to discussions, and engage with a global community without limits.",
+  },
+  {
+    id: "4",
+    question: "Can anyone contribute to Vitademy?",
+    answer:
+      "Yes! Our open forum allows anyone to share ideas, ask questions, or help others — creating a collaborative, community-powered learning space.",
+  },
+  {
+    id: "5",
+    question: "Do I need to follow a strict schedule?",
+    answer:
+      "Not at all. Vitademy is built for flexibility. Learn when, where, and how you want — with resources designed to fit your rhythm.",
+  },
+];
+
 export default function Home() {
   return (
     <div>
@@ -95,7 +135,7 @@ export default function Home() {
         <div className="flex flex-col gap-24">
           <section className="flex flex-col gap-3 items-center">
             <ReactTyped
-              className="flex justify-center items-center text-xl text-[#6946a1] dark:text-[#B48EF0]"
+              className="flex justify-center items-center text-xl text-[#32078E] dark:text-[#8C58FF]"
               strings={["Vitademy.", "ヴィタデミー.", "비타데미."]}
               typeSpeed={40}
               backSpeed={50}
@@ -105,9 +145,11 @@ export default function Home() {
               Welcome to Vitademy
             </p>
             <p className="text-center text-[#7a7a7a] dark:text-[#8C8C8C]">
-              A great space to ask.
+              The greatest space to learn.
             </p>
-            <Button className="w-50 mt-5">Get Started</Button>
+            <Button className="w-50 mt-5" size="lg">
+              Let's Stay in Touch ❤
+            </Button>
           </section>
           <section className="grid grid-cols-2 lg:grid-cols-4 gap-10 mb-16">
             <Link href="/learn/articles">
@@ -136,10 +178,10 @@ export default function Home() {
                   </svg>
                 </div>
                 <div>
-                  <p className="font-black text-lg text-[#6A0DAD] dark:text-[#D8B4FE] transition-all group-hover:text-[#A855F7] dark:group-hover:text-[#e3cff8]">
-                    Browse Articles
+                  <p className="font-black text-md text-[#6A0DAD] dark:text-[#D8B4FE] transition-all group-hover:text-[#A855F7] dark:group-hover:text-[#e3cff8]">
+                    Up-to-date Learning Space
                   </p>
-                  <p>Explore topics that interest you.</p>
+                  <p>Explore countless topics.</p>
                 </div>
               </div>
             </Link>
@@ -152,7 +194,7 @@ export default function Home() {
                     viewBox="0 0 24 24"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
-                    className="transition-transform duration-300 ease-in-out transform origin-center group-hover:scale-110 group-hover:rotate-[10deg] group-hover:stroke-[#FBBF24] dark:group-hover:stroke-[#fcd34d]"
+                    className="transition-transform duration-300 ease-in-out transform origin-center group-hover:scale-110 group-hover:rotate-[2deg] group-hover:stroke-[#FBBF24] dark:group-hover:stroke-[#fcd34d]"
                   >
                     <circle
                       cx="12"
@@ -163,19 +205,39 @@ export default function Home() {
                       className="group-hover:stroke-[#FBBF24] dark:group-hover:stroke-[#fcd34d]"
                     />
                     <path
-                      d="M12 8V12L15 14"
+                      d="M3 12h18"
                       stroke="#F59E0B"
-                      strokeWidth="2"
+                      strokeWidth="1.5"
+                      className="group-hover:stroke-[#FBBF24] dark:group-hover:stroke-[#fcd34d]"
+                    />
+                    <path
+                      d="M6 9c1.5 3 10.5 3 12 0"
+                      stroke="#F59E0B"
+                      strokeWidth="1.5"
+                      fill="none"
+                      className="group-hover:stroke-[#FBBF24] dark:group-hover:stroke-[#fcd34d]"
+                    />
+                    <path
+                      d="M12 5l5 2.5-5 2.5-5-2.5L12 5z"
+                      stroke="#F59E0B"
+                      strokeWidth="1.5"
+                      fill="none"
+                      className="group-hover:stroke-[#FBBF24] dark:group-hover:stroke-[#fcd34d]"
+                    />
+                    <path
+                      d="M17 7.5v2"
+                      stroke="#F59E0B"
+                      strokeWidth="1.5"
                       strokeLinecap="round"
                       className="group-hover:stroke-[#FBBF24] dark:group-hover:stroke-[#fcd34d]"
                     />
                   </svg>
                 </div>
                 <div>
-                  <p className="font-black text-lg text-[#F59E0B] transition-all group-hover:text-[#FBBF24] dark:group-hover:text-[#FCD34D]">
-                    Interactive Modules
+                  <p className="font-black text-md text-[#F59E0B] transition-all group-hover:text-[#FBBF24] dark:group-hover:text-[#FCD34D]">
+                    World-class Educators
                   </p>
-                  <p>Learn through fun activities.</p>
+                  <p>Learn from the real practitioners.</p>
                 </div>
               </div>
             </Link>
@@ -207,10 +269,10 @@ export default function Home() {
                   </svg>
                 </div>
                 <div>
-                  <p className="font-black text-lg text-[#10B981] transition-all group-hover:text-[#34D399] dark:group-hover:text-[#6EE7B7]">
-                    Complete Challenges
+                  <p className="font-black text-md text-[#10B981] transition-all group-hover:text-[#34D399] dark:group-hover:text-[#6EE7B7]">
+                    Brain-boosting Live Events
                   </p>
-                  <p>Test your skills with puzzles.</p>
+                  <p>Join workshops and seminars.</p>
                 </div>
               </div>
             </Link>
@@ -247,296 +309,229 @@ export default function Home() {
                   </svg>
                 </div>
                 <div>
-                  <p className="font-black text-lg text-[#2563EB] dark:text-[#93C5FD] transition-all group-hover:text-[#3B82F6] dark:group-hover:text-[#DBEAFE]">
-                    Join Our Workshops
+                  <p className="font-black text-md text-[#2563EB] dark:text-[#93C5FD] transition-all group-hover:text-[#3B82F6] dark:group-hover:text-[#DBEAFE]">
+                    Ever-growing Community
                   </p>
-                  <p>Learn and collaborate in groups.</p>
+                  <p>Connect with other learners.</p>
                 </div>
               </div>
             </Link>
           </section>
-          <section className="hidden md:grid md:grid-cols-3 md:gap-10">
-            <div className="flex flex-col gap-5">
-              <div className="w-fit rounded-full bg-[#e3d4fa] dark:bg-[#3c2661] px-4 py-0 text-sm uppercase text-[#3c2661] dark:text-[#e3d4fa]">
-                Learning Hub
-              </div>
-              <h1 className="text-6xl font-black">
-                Change your perspective about learning.
+          <section className="mb-16">
+            <div className="flex items-center justify-center gap-10 mb-14 md:mb-28">
+              <div className="flex-grow border-t-4 border-gray-300 dark:border-gray-600 mx-4" />
+              <h1 className="text-4xl md:text-6xl font-bold text-center whitespace-nowrap">
+                Who We Are
               </h1>
+              <div className="flex-grow border-t-4 border-gray-300 dark:border-gray-600 mx-4" />
             </div>
-            <div className="col-span-2 from-20% to-60% from-[#9f6cf0]/10 to-[#9f6cf0]/5 dark:from-[#7d5bb5]/20 dark:to-[#7d5bb5]/10 border-[#7d5bb5]/10 bg-gradient-to-b rounded-2xl border-2 p-10 grid grid-cols-2 gap-16">
-              <div>
-                <Image
-                  src="/omnidirectional_learning.jpg"
-                  alt="Omnidirectional Learning"
-                  width={400}
-                  height={400}
-                  className="rounded-2xl"
-                ></Image>
+            <div className="hidden md:grid md:grid-cols-3 md:gap-10">
+              <div className="flex flex-col gap-5">
+                <CategoryBadge>About Us</CategoryBadge>
+                <h1 className="text-6xl font-black">
+                  Change your perspective about learning.
+                </h1>
               </div>
-              <div className="flex flex-col gap-10">
-                <h2 className="text-3xl font-black">
-                  Omnidirectional Learning: A 360° Approach to Education
-                </h2>
-                <p className="text-justify">
-                  Omnidirectional learning helps you learn in different ways —
-                  using fun methods, real-life examples, and creative thinking
-                  to understand things better and solve problems easily.
-                </p>
-                <Link href="">
-                  <Button>Learn More</Button>
-                </Link>
-              </div>
-            </div>
-            <div className="col-span-2 from-20% to-60% from-[#7efca0]/10 to-[#7efca0]/5 dark:from-[#5cff88]/20 dark:to-[#5cff88]/10 border-[#5cff88]/10 bg-gradient-to-b rounded-2xl border-2 p-10 grid grid-cols-2 gap-16">
-              <div className="flex flex-col gap-10">
-                <h2 className="text-3xl font-black">
-                  Free Modules: Explore our content at no cost – no strings
-                  attached!
-                </h2>
-                <p className="text-justify">
-                  Get started with our free modules and dive into a range of
-                  lessons, activities, and resources — all at no cost. It's a
-                  great way to start learning and discovering new ideas!
-                </p>
-                <Link href="/learn/modules">
-                  <Button>Start Learning</Button>
-                </Link>
-              </div>
-              <div>
-                <Image
-                  src="/free_modules.jpg"
-                  alt="Free Modules"
-                  width={400}
-                  height={400}
-                  className="rounded-2xl"
-                ></Image>
-              </div>
-            </div>
-            <div className="row-span-2 from-20% to-60% from-[#c7106c]/10 to-[#c7106c]/5 dark:from-[#bf2a75]/20 dark:to-[#bf2a75]/10 border-[#bf2a75]/10 bg-gradient-to-b rounded-2xl border-2 p-10">
-              <div className="flex flex-col gap-20">
-                <div className="flex flex-col gap-5">
-                  <h2 className="text-3xl font-black">Join Our Events</h2>
-                  <p className="text-justify">
-                    Connect, learn, and grow with like-minded individuals
-                    through our engaging events and workshops.
-                  </p>
-                  <Link href="/event/workshops">
-                    <Button>I'm Interested</Button>
-                  </Link>
-                </div>
+              <div className="col-span-2 from-20% to-60% from-[#9f6cf0]/10 to-[#9f6cf0]/5 dark:from-[#7d5bb5]/20 dark:to-[#7d5bb5]/10 border-[#7d5bb5]/10 bg-gradient-to-b rounded-2xl border-2 p-10 grid grid-cols-2 gap-16">
                 <div>
                   <Image
-                    src="/education_event.jpg"
-                    alt="Education Event"
+                    src="/omnidirectional_learning.jpg"
+                    alt="Omnidirectional Learning"
                     width={400}
                     height={400}
                     className="rounded-2xl"
                   ></Image>
                 </div>
+                <div className="flex flex-col gap-10">
+                  <h2 className="text-3xl font-black">
+                    Omnidirectional Learning: A 360° Approach to Education
+                  </h2>
+                  <p className="text-justify">
+                    Omnidirectional learning helps you learn in different ways —
+                    using fun methods, real-life examples, and creative thinking
+                    to understand things better and solve problems easily.
+                  </p>
+                  <Link href="/story">
+                    <Button>Learn More</Button>
+                  </Link>
+                </div>
               </div>
             </div>
-            <div className="col-span-2 from-20% to-60% from-[#9f6cf0]/10 to-[#9f6cf0]/5 dark:from-[#7d5bb5]/20 dark:to-[#7d5bb5]/10 border-[#7d5bb5]/10 bg-gradient-to-b rounded-2xl border-2 p-10 grid grid-cols-2 gap-16">
-              <div>
-                <Image
-                  src="/one_on_one.jpg"
-                  alt="One on One Consulting"
-                  width={400}
-                  height={400}
-                  className="rounded-2xl"
-                ></Image>
-              </div>
-              <div className="flex flex-col gap-10">
-                <h2 className="text-3xl font-black">
-                  One-on-One Consultations
-                </h2>
-                <p className="text-justify">
-                  Connect with our friendly consultants for personalized
-                  guidance. Whether you have questions or need direction, we're
-                  here to help you every step of the way.
-                </p>
-                <Link href="">
-                  <Button>Meet Our Consultors</Button>
-                </Link>
-              </div>
-            </div>
-            <div className="col-span-3 from-20% to-60% from-[#3492eb]/10 to-[#3492eb]/5 dark:from-[#17558f]/20 dark:to-[#7d5bb5]/10 border-[#17558f]/10 bg-gradient-to-b rounded-2xl border-2 p-15 grid grid-cols-2">
-              <div className="flex flex-col gap-10">
-                <h2 className="text-3xl font-black">
-                  Virtual Classes: Learn Anytime, Anywhere
-                </h2>
-                <p className="text-justify">
-                  Our virtual classes give you the freedom to learn on your own
-                  schedule. Whether you're an early bird or a night owl, you can
-                  access lessons, resources, and interactive sessions from the
-                  comfort of your home — or anywhere you choose.
-                </p>
-                <Button className="w-50">Learn Now</Button>
-              </div>
-              <div className="flex justify-end items-center">
-                <Image
-                  src="/virtual_class.jpg"
-                  alt="Virtual Classes"
-                  width={400}
-                  height={400}
-                  className="rounded-2xl"
-                ></Image>
+            <div className="col-span-2 block md:hidden">
+              <div className="h-[900px] from-[#9f6cf0]/10 to-[#9f6cf0]/5 dark:from-[#7d5bb5]/20 dark:to-[#7d5bb5]/10 border-[#7d5bb5]/10 bg-gradient-to-b rounded-2xl border-2 p-10">
+                <div className="flex flex-col gap-10 h-full">
+                  <Image
+                    src="/omnidirectional_learning.jpg"
+                    alt="Omnidirectional Learning"
+                    width={400}
+                    height={400}
+                    className="rounded-2xl"
+                  />
+                  <h2 className="text-3xl font-black">
+                    Omnidirectional Learning: A 360° Approach to Education
+                  </h2>
+                  <p>
+                    Omnidirectional learning helps you learn in different ways —
+                    using fun methods, real-life examples, and creative thinking
+                    to understand things better and solve problems easily.
+                  </p>
+                  <Link href="">
+                    <Button>Learn More</Button>
+                  </Link>
+                </div>
               </div>
             </div>
           </section>
-
-          {/* Mobile Learning Hub */}
-          <section className="grid grid-cols-1 gap-10 md:hidden">
-            <div className="flex flex-col gap-5">
-              <div className="w-fit rounded-full bg-[#e3d4fa] dark:bg-[#3c2661] px-4 py-0 text-sm uppercase text-[#3c2661] dark:text-[#e3d4fa]">
-                Learning Hub
-              </div>
-              <h1 className="text-5xl font-black md:text-6xl">
-                Change your perspective about learning.
-              </h1>
-            </div>
-
-            <div className="col-span-2 block md:hidden">
-              <Swiper
-                modules={[Pagination]}
-                pagination={{ clickable: true }}
-                spaceBetween={20}
-                slidesPerView={1}
-                className="rounded-2xl"
+          <section id="faq">
+            <h1 className="text-4xl font-bold text-center mb-10">
+              Frequently Asked Questions:
+            </h1>
+            <div className="flex flex-col items-center">
+              <Accordion
+                type="single"
+                collapsible
+                className="mx-auto w-full lg:max-w-3xl p-10"
               >
-                <SwiperSlide>
-                  <div className="h-[900px] from-[#9f6cf0]/10 to-[#9f6cf0]/5 dark:from-[#7d5bb5]/20 dark:to-[#7d5bb5]/10 border-[#7d5bb5]/10 bg-gradient-to-b rounded-2xl border-2 p-10">
-                    <div className="flex flex-col gap-10 h-full">
-                      <Image
-                        src="/omnidirectional_learning.jpg"
-                        alt="Omnidirectional Learning"
-                        width={400}
-                        height={400}
-                        className="rounded-2xl"
-                      />
-                      <h2 className="text-3xl font-black">
-                        Omnidirectional Learning: A 360° Approach to Education
-                      </h2>
-                      <p>
-                        Omnidirectional learning helps you learn in different
-                        ways — using fun methods, real-life examples, and
-                        creative thinking to understand things better and solve
-                        problems easily.
-                      </p>
-                      <Link href="">
-                        <Button>Learn More</Button>
-                      </Link>
+                {faqs.map((faq) => (
+                  <AccordionItem key={faq.id} value={faq.id}>
+                    <AccordionTrigger className="transition-opacity duration-200 hover:no-underline hover:opacity-60">
+                      <div className="font-medium sm:py-1 lg:py-2 lg:text-lg">
+                        {faq.question}
+                      </div>
+                    </AccordionTrigger>
+                    <AccordionContent className="sm:mb-1 lg:mb-2">
+                      <div className="text-muted-foreground lg:text-lg">
+                        {faq.answer}
+                      </div>
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+              <Button className="text-center flex justify-center">
+                Learn More
+              </Button>
+            </div>
+          </section>
+          <section id="what-we-give" className="mt-15">
+            <div className="flex items-center justify-center gap-10 mb-14 md:mb-28">
+              <div className="flex-grow border-t-4 border-gray-300 dark:border-gray-600 mx-4" />
+              <h1 className="text-4xl md:text-6xl font-bold text-center whitespace-nowrap">
+                What We Give
+              </h1>
+              <div className="flex-grow border-t-4 border-gray-300 dark:border-gray-600 mx-4" />
+            </div>
+            <div className="flex flex-col gap-20 md:gap-40">
+              <div className="grid md:grid-cols-2">
+                <div className="flex flex-col gap-10 justify-between">
+                  <h1 className="font-bold text-3xl text-center md:text-start md:text-5xl leading-relaxed">
+                    🌌1000+ Modules. One Unified Platform.
+                  </h1>
+                  <div className="flex justify-center md:hidden">
+                    <Image
+                      src="/what-we-give/modules.jpg"
+                      alt="Learning Module Thumbnail"
+                      width={400}
+                      height={200}
+                      className="rounded-2xl ease-in-out duration-200 group-hover:scale-110"
+                    ></Image>
+                  </div>
+                  <p className="leading-loose text-lg md:text-xl text-justify">
+                    Explore over 1000+ expert-crafted modules — from mathematics
+                    to astronomy, all seamlessly integrated in one platform.
+                    Everything you need to learn, connected and ready, in one
+                    place.
+                  </p>
+                </div>
+                <div className="hidden md:flex justify-center">
+                  <Image
+                    src="/what-we-give/modules.jpg"
+                    alt="Learning Module Thumbnail"
+                    width={400}
+                    height={200}
+                    className="rounded-2xl ease-in-out duration-200 group-hover:scale-110"
+                  ></Image>
+                </div>
+              </div>
+              <div className="grid md:grid-cols-2">
+                <div className="hidden md:flex items-center">
+                  <Image
+                    src="/what-we-give/connect.jpg"
+                    alt="Learning Module Thumbnail"
+                    width={600}
+                    height={600}
+                    className="rounded-2xl ease-in-out duration-200 group-hover:scale-110"
+                  ></Image>
+                </div>
+                <div className="flex flex-col gap-10 justify-between">
+                  <h1 className="font-bold text-3xl text-center md:text-start md:text-5xl leading-relaxed">
+                    🧠Connect Knowledge like Your Brain.
+                  </h1>
+                  <div className="md:hidden flex items-center">
+                    <Image
+                      src="/what-we-give/connect.jpg"
+                      alt="Learning Module Thumbnail"
+                      width={600}
+                      height={600}
+                      className="rounded-2xl ease-in-out duration-200 group-hover:scale-110"
+                    ></Image>
+                  </div>
+                  <p className="leading-loose text-lg md:text-xl text-justify">
+                    Our platform connects ideas across disciplines — just like
+                    your brain does. Every topic is curated to build a seamless,
+                    interconnected understanding.
+                  </p>
+                </div>
+              </div>
+              <div className="grid md:grid-cols-2">
+                <div className="flex flex-col gap-10 justify-between">
+                  <h1 className="font-bold text-3xl text-center md:text-start md:text-5xl leading-relaxed">
+                    🚀Find Your Style, Learn Your Way.
+                  </h1>
+                  <div className="md:hidden flex justify-center">
+                    <Image
+                      src="/what-we-give/find-your-style.jpg"
+                      alt="Learning Module Thumbnail"
+                      width={600}
+                      height={200}
+                      className="rounded-2xl ease-in-out duration-200 group-hover:scale-110"
+                    ></Image>
+                  </div>
+                  <div className="leading-loose flex flex-col gap-5 text-lg md:text-xl text-justify">
+                    <div>
+                      At Vitademy, you control the pace. Our decentralised
+                      platform lets you explore, practice, and grow — anytime,
+                      anywhere.
+                    </div>
+                    <div className="underline underline-offset-8"> Access:</div>
+                    <div>
+                      <p>✅ Engaging Video Lessons</p>
+                      <p>✅ Easy-to-digest Text Summaries & Lecture Notes</p>
+                      <p>✅ Real-time Voiceover Explanations</p>
+                      <p>✅ Interactive Problem Sheets & Practice Modules</p>
+                    </div>
+                    <div>
+                      No rigid schedules. No limits. Education that adapts to
+                      you — not the other way around.
                     </div>
                   </div>
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <div className="h-[900px] from-[#7efca0]/10 to-[#7efca0]/5 dark:from-[#5cff88]/20 dark:to-[#5cff88]/10 border-[#5cff88]/10 bg-gradient-to-b rounded-2xl border-2 p-10">
-                    <div className="flex flex-col gap-10 h-full">
-                      <Image
-                        src="/free_modules.jpg"
-                        alt="Free Modules"
-                        width={400}
-                        height={400}
-                        className="rounded-2xl"
-                      />
-                      <h2 className="text-3xl font-black">
-                        Free Modules: Explore our content at no cost – no
-                        strings attached!
-                      </h2>
-                      <p>
-                        Get started with our free modules and dive into a range
-                        of lessons, activities, and resources — all at no cost.
-                        It's a great way to start learning and discovering new
-                        ideas!
-                      </p>
-                      <Link href="/learn/modules">
-                        <Button>Start Learning</Button>
-                      </Link>
-                    </div>
-                  </div>
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <div className="h-[900px] from-[#c7106c]/10 to-[#c7106c]/5 dark:from-[#bf2a75]/20 dark:to-[#bf2a75]/10 border-[#bf2a75]/10 bg-gradient-to-b rounded-2xl border-2 p-10">
-                    <div className="flex flex-col gap-10 h-full">
-                      <Image
-                        src="/education_event.jpg"
-                        alt="Education Event"
-                        width={400}
-                        height={400}
-                        className="rounded-2xl"
-                      />
-                      <h2 className="text-3xl font-black">Join Our Events</h2>
-                      <p>
-                        Connect, learn, and grow with like-minded individuals
-                        through our engaging events and workshops.
-                      </p>
-                      <Link href="/event/workshops">
-                        <Button>I'm Interested</Button>
-                      </Link>
-                    </div>
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="h-[900px] from-[#9f6cf0]/10 to-[#9f6cf0]/5 dark:from-[#7d5bb5]/20 dark:to-[#7d5bb5]/10 border-[#7d5bb5]/10 bg-gradient-to-b rounded-2xl border-2 p-10">
-                    <div className="flex flex-col gap-10 h-full">
-                      <Image
-                        src="/one_on_one.jpg"
-                        alt="One on One Consultation"
-                        width={400}
-                        height={400}
-                        className="rounded-2xl"
-                      />
-                      <h2 className="text-3xl font-black">
-                        One-on-One Consultations
-                      </h2>
-                      <p className="text-justify">
-                        Connect with our friendly consultants for personalized
-                        guidance. Whether you have questions or need direction,
-                        we're here to help you every step of the way.
-                      </p>
-                      <Link href="">
-                        <Button>Meet Our Consultors</Button>
-                      </Link>
-                    </div>
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="h-[900px] from-[#3492eb]/10 to-[#3492eb]/5 dark:from-[#17558f]/20 dark:to-[#7d5bb5]/10 border-[#17558f]/10 bg-gradient-to-b rounded-2xl border-2 p-10">
-                    <div className="flex flex-col gap-10 h-full">
-                      <Image
-                        src="/virtual_class.jpg"
-                        alt="Virtual Class"
-                        width={400}
-                        height={400}
-                        className="rounded-2xl"
-                      />
-                      <h2 className="text-3xl font-black">
-                        Virtual Classes: Learn Anytime, Anywhere
-                      </h2>
-                      <p className="text-justify">
-                        Our virtual classes give you the freedom to learn on
-                        your own schedule. Whether you're an early bird or a
-                        night owl, you can access lessons, resources, and
-                        interactive sessions from the comfort of your home — or
-                        anywhere you choose.
-                      </p>
-                      <Link href="">
-                        <Button>Learn Now</Button>
-                      </Link>
-                    </div>
-                  </div>
-                </SwiperSlide>
-              </Swiper>
+                </div>
+                <div className="hidden md:flex justify-center">
+                  <Image
+                    src="/what-we-give/find-your-style.jpg"
+                    alt="Learning Module Thumbnail"
+                    width={600}
+                    height={200}
+                    className="rounded-2xl ease-in-out duration-200 group-hover:scale-110"
+                  ></Image>
+                </div>
+              </div>
             </div>
           </section>
           <section>
+            <div className="flex-grow border-t-4 border-gray-300 dark:border-gray-600 mb-12" />
             <div className="flex flex-col gap-5">
-              <h1 className="text-4xl font-extrabold">Top Modules</h1>
-              <p className="text-lg mb-5">
-                Our top learning modules recommended for you
-              </p>
+              <h1 className="text-4xl font-extrabold">Browse Our Products</h1>
+              <p className="text-lg mb-5">Our products recommended for you</p>
               <p className="text-sm text-gray-600 dark:text-gray-400 italic mt-2">
                 Swipe me →
               </p>
@@ -583,13 +578,184 @@ export default function Home() {
                   ))}
                 </Swiper>
               </div>
+              <div className="flex justify-center">
+                <Button>View More</Button>
+              </div>
+            </div>
+          </section>
+          <section>
+            <div className="flex items-center justify-center gap-10 md:mb-28">
+              <div className="flex-grow border-t-4 border-gray-300 dark:border-gray-600 mx-4" />
+              <h1 className="text-4xl md:text-6xl font-bold text-center whitespace-nowrap">
+                What We Do
+              </h1>
+              <div className="flex-grow border-t-4 border-gray-300 dark:border-gray-600 mx-4" />
+            </div>
+            <div className="hidden md:grid md:grid-cols-3 md:gap-10">
+              <div className="col-span-2 from-20% to-60% from-[#7efca0]/10 to-[#7efca0]/5 dark:from-[#5cff88]/20 dark:to-[#5cff88]/10 border-[#5cff88]/10 bg-gradient-to-b rounded-2xl border-2 p-10 grid grid-cols-2 gap-16">
+                <div className="flex flex-col gap-10">
+                  <h2 className="text-3xl font-black">
+                    🌍 Decentralised Forum. Knowledge Without Borders.
+                  </h2>
+                  <p className="text-justify">
+                    Vitademy’s open forum lets anyone share, ask, and learn — no
+                    gatekeeping, just real, community-driven education.
+                  </p>
+                  <Link href="/learn/modules">
+                    <Button>Start Asking</Button>
+                  </Link>
+                </div>
+                <div>
+                  <Image
+                    src="/free_modules.jpg"
+                    alt="Free Modules"
+                    width={400}
+                    height={400}
+                    className="rounded-2xl"
+                  ></Image>
+                </div>
+              </div>
+              <div className="row-span-2 from-20% to-60% from-[#c7106c]/10 to-[#c7106c]/5 dark:from-[#bf2a75]/20 dark:to-[#bf2a75]/10 border-[#bf2a75]/10 bg-gradient-to-b rounded-2xl border-2 p-10">
+                <div className="flex flex-col gap-20">
+                  <div className="flex flex-col gap-5">
+                    <h2 className="text-3xl font-black">
+                      📅 Join Events. Stay Connected.
+                    </h2>
+                    <p className="text-justify">
+                      Learn beyond the platform. Join our workshops, seminars,
+                      and networking events to connect with passionate learners
+                      worldwide — grow your knowledge and your network.
+                    </p>
+                    <Link href="/event/workshops">
+                      <Button>I'm Interested</Button>
+                    </Link>
+                  </div>
+                  <div>
+                    <Image
+                      src="/education_event.jpg"
+                      alt="Education Event"
+                      width={400}
+                      height={400}
+                      className="rounded-2xl"
+                    ></Image>
+                  </div>
+                </div>
+              </div>
+              <div className="col-span-2 from-20% to-60% from-[#9f6cf0]/10 to-[#9f6cf0]/5 dark:from-[#7d5bb5]/20 dark:to-[#7d5bb5]/10 border-[#7d5bb5]/10 bg-gradient-to-b rounded-2xl border-2 p-10 grid grid-cols-2 gap-16">
+                <div>
+                  <Image
+                    src="/one_on_one.jpg"
+                    alt="One on One Consulting"
+                    width={400}
+                    height={400}
+                    className="rounded-2xl"
+                  ></Image>
+                </div>
+                <div className="flex flex-col gap-10">
+                  <h2 className="text-3xl font-black">
+                    🎯 One-on-One Consultations. Personalised Just For You.
+                  </h2>
+                  <p className="text-justify">
+                    Get personalised guidance to overcome challenges, set clear
+                    goals, and stay on track — tailored to your learning
+                    journey.
+                  </p>
+                  <Link href="">
+                    <Button>Meet Our Consultors</Button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Mobile What We Do */}
+          <section className="grid grid-cols-1 gap-10 md:hidden">
+            <div className="col-span-2 block md:hidden">
+              <Swiper
+                modules={[Pagination]}
+                pagination={{ clickable: true }}
+                spaceBetween={20}
+                slidesPerView={1}
+                className="rounded-2xl"
+              >
+                <SwiperSlide>
+                  <div className="h-[900px] from-[#7efca0]/10 to-[#7efca0]/5 dark:from-[#5cff88]/20 dark:to-[#5cff88]/10 border-[#5cff88]/10 bg-gradient-to-b rounded-2xl border-2 p-10">
+                    <div className="flex flex-col gap-10 h-full">
+                      <Image
+                        src="/free_modules.jpg"
+                        alt="Free Modules"
+                        width={400}
+                        height={400}
+                        className="rounded-2xl"
+                      />
+                      <h2 className="text-3xl font-black">
+                        🌍 Decentralised Forum. Knowledge Without Borders.
+                      </h2>
+                      <p>
+                        Vitademy’s open forum lets anyone share, ask, and learn
+                        — no gatekeeping, just real, community-driven education.
+                      </p>
+                      <Link href="/learn/modules">
+                        <Button>Start Asking</Button>
+                      </Link>
+                    </div>
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <div className="h-[900px] from-[#c7106c]/10 to-[#c7106c]/5 dark:from-[#bf2a75]/20 dark:to-[#bf2a75]/10 border-[#bf2a75]/10 bg-gradient-to-b rounded-2xl border-2 p-10">
+                    <div className="flex flex-col gap-10 h-full">
+                      <Image
+                        src="/education_event.jpg"
+                        alt="Education Event"
+                        width={400}
+                        height={400}
+                        className="rounded-2xl"
+                      />
+                      <h2 className="text-3xl font-black">
+                        📅 Join Events. Stay Connected.
+                      </h2>
+                      <p>
+                        Learn beyond the platform. Join our workshops, seminars,
+                        and networking events to connect with passionate
+                        learners worldwide — grow your knowledge and your
+                        network.
+                      </p>
+                      <Link href="/event/workshops">
+                        <Button>I'm Interested</Button>
+                      </Link>
+                    </div>
+                  </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <div className="h-[900px] from-[#9f6cf0]/10 to-[#9f6cf0]/5 dark:from-[#7d5bb5]/20 dark:to-[#7d5bb5]/10 border-[#7d5bb5]/10 bg-gradient-to-b rounded-2xl border-2 p-10">
+                    <div className="flex flex-col gap-10 h-full">
+                      <Image
+                        src="/one_on_one.jpg"
+                        alt="One on One Consultation"
+                        width={400}
+                        height={400}
+                        className="rounded-2xl"
+                      />
+                      <h2 className="text-3xl font-black">
+                        🎯 One-on-One Consultations. Personalised Just For You.
+                      </h2>
+                      <p className="text-justify">
+                        Get personalised guidance to overcome challenges, set
+                        clear goals, and stay on track — tailored to your
+                        learning journey.
+                      </p>
+                      <Link href="">
+                        <Button>Meet Our Consultors</Button>
+                      </Link>
+                    </div>
+                  </div>
+                </SwiperSlide>
+              </Swiper>
             </div>
           </section>
           <section>
             <div className="flex flex-col gap-5">
-              <div className="w-fit rounded-full bg-[#e3d4fa] dark:bg-[#3c2661] px-4 py-0 text-sm uppercase text-[#3c2661] dark:text-[#e3d4fa]">
-                Vitademy Community
-              </div>
+              <CategoryBadge>Vitademy Community</CategoryBadge>
               <div className="grid grid-cols-3 gap-5">
                 <div className="col-span-3 md:col-span-2">
                   <div className="flex flex-col gap-5">
@@ -612,23 +778,9 @@ export default function Home() {
                         Whenever you need support, our community is here to
                         encourage and inspire you every step of the way.
                       </p>
-                      <div className="flex gap-4">
-                        {socialLinks.map((link, index) => (
-                          <a
-                            key={index}
-                            href={link.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="p-3 rounded-full text-white transition-transform duration-300 transform hover:scale-110"
-                            style={{
-                              backgroundColor: link.color,
-                              boxShadow: `0 4px 15px ${link.color}80`,
-                            }}
-                          >
-                            {link.icon}
-                          </a>
-                        ))}
-                      </div>
+                      <Link href="" className="text-center">
+                        <Button size="lg">Join the community ☘</Button>
+                      </Link>
                     </div>
                   </div>
                 </div>

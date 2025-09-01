@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import ModeToggle from "./ModeToggle";
 import Image from "next/image";
@@ -11,6 +11,21 @@ import {
   AccordionTrigger,
 } from "@/components/ui/Accordion";
 import { Drawer, DrawerContent, DrawerTrigger } from "./ui/Drawer";
+import { useUser } from "@clerk/nextjs";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "./ui/dialog";
+import { Label } from "./ui/label";
+import { Textarea } from "./ui/textarea";
+import { Input } from "./ui/input";
+import { Button } from "./ui/Button";
 
 const learnings: { title: string; href: string; description: string }[] = [
   {
@@ -89,7 +104,40 @@ const stories: { title: string; href: string; description: string }[] = [
   },
 ];
 
+const vitaminRedirects: { title: string; href: string; description: string }[] =
+  [
+    {
+      title: "Dashboard",
+      href: "/admin/dashboard",
+      description: "Cool kids only.",
+    },
+    {
+      title: "Add Module",
+      href: "/admin/dashboard",
+      description: "Add modules for VitaLearn.",
+    },
+    {
+      title: "Add Artice",
+      href: "/admin/dashboard",
+      description: "Add articles for VitaLearn.",
+    },
+    {
+      title: "Add Shop Item",
+      href: "/admin/dashboard",
+      description: "Add items for VitaShop.",
+    },
+    {
+      title: "Create FAQ",
+      href: "/admin/dashboard",
+      description: "Add FAQ for VitaConnect.",
+    },
+  ];
+
 function MobileNavbar() {
+  const { user } = useUser();
+  const isAdmin = (user?.publicMetadata as { isAdmin?: boolean })?.isAdmin;
+  const [isContactOpen, setContactOpen] = useState(false);
+
   return (
     <div className="flex justify-between items-center">
       <div className="flex gap-6 items-center">
@@ -102,6 +150,46 @@ function MobileNavbar() {
           ></Image>
         </Link>
       </div>
+      <Dialog open={isContactOpen} onOpenChange={setContactOpen}>
+        <DialogContent className="sm:max-w-[425px]">
+          <DialogHeader>
+            <DialogTitle>Contact Vita</DialogTitle>
+            <DialogDescription>
+              Got anything you want to say to us? Give us a shout!
+            </DialogDescription>
+          </DialogHeader>
+          <div className="grid gap-4">
+            <div className="grid gap-3">
+              <Label htmlFor="name">Name</Label>
+              <Input id="name" name="name" />
+            </div>
+            <div className="grid gap-3">
+              <Label htmlFor="workspace">Workspace</Label>
+              <Input id="workspace" name="workspace" />
+            </div>
+            <div className="grid gap-3">
+              <Label htmlFor="email">Email</Label>
+              <Input id="email" name="email" />
+            </div>
+            <div className="grid gap-3">
+              <Label htmlFor="phone">Phone</Label>
+              <Input id="phone" name="phone" />
+            </div>
+            <div className="grid gap-3">
+              <Label htmlFor="inquiry">What do you have to say for us?</Label>
+              <Textarea id="inquiry" name="inquiry" />
+            </div>
+          </div>
+          <DialogFooter className="mt-5">
+            <DialogClose asChild>
+              <Button variant="outline">Cancel</Button>
+            </DialogClose>
+            <Button type="submit" className="w-full">
+              Send
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
       <div className="flex gap-5 items-center">
         <ModeToggle></ModeToggle>
         <Drawer direction="left">
@@ -161,6 +249,24 @@ function MobileNavbar() {
                   VitaStory
                 </AccordionTrigger>
                 <AccordionContent className="AccordionContent">
+                  {stories.map((story) => {
+                    const isContact = story.title === "Contact";
+                    return (
+                      <div key={story.title}>
+                        {isContact ? (
+                          <div className="px-10 py-5">
+                            <a onClick={() => setContactOpen(true)}>
+                              {story.title}
+                            </a>
+                          </div>
+                        ) : (
+                          <div className="px-10 py-5">
+                            <a href={story.href}>{story.title}</a>
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
                   {stories.map((story) => (
                     <div className="px-10 py-5">
                       <a href={story.href}>{story.title}</a>
@@ -168,6 +274,22 @@ function MobileNavbar() {
                   ))}
                 </AccordionContent>
               </AccordionItem>
+              {isAdmin && (
+                <AccordionItem value="item-5" className="py-2 px-10">
+                  <AccordionTrigger className="text-md">
+                    VitaMin
+                  </AccordionTrigger>
+                  <AccordionContent className="AccordionContent">
+                    {vitaminRedirects.map((vitaminRedirect) => (
+                      <div className="px-10 py-5">
+                        <a href={vitaminRedirect.href}>
+                          {vitaminRedirect.title}
+                        </a>
+                      </div>
+                    ))}
+                  </AccordionContent>
+                </AccordionItem>
+              )}
             </Accordion>
           </DrawerContent>
         </Drawer>
