@@ -465,7 +465,7 @@ export default function Home() {
                         diterapkan, memberi kamu keunggulan di tengah
                         persaingan.
                       </p>
-                      <Link href="/learn/modules">
+                      <Link href="https://lynk.id/vitademy/o4kxoq5qd3ol">
                         <Button>Sign Me Up</Button>
                       </Link>
                     </div>
@@ -491,7 +491,7 @@ export default function Home() {
                         akan terasa lebih mudah, lebih bermakna, dan lebih
                         berdampak.
                       </p>
-                      <Link href="/event/workshops">
+                      <Link href="https://lynk.id/vitademy/875or18x34lo">
                         <Button>Start Learning</Button>
                       </Link>
                     </div>
@@ -516,7 +516,7 @@ export default function Home() {
                         yang ada di pikiran Anda. Kami sedia mendengarkan
                         kalian.
                       </p>
-                      <Link href="">
+                      <Link href="https://lynk.id/vitademy/z8zkmyvjvkqe">
                         <Button>Meet Our Consultors</Button>
                       </Link>
                     </div>
@@ -541,7 +541,7 @@ export default function Home() {
                         otak digabungkan menjadi satu untuk membicarakan
                         berbagai macam topik.
                       </p>
-                      <Link href="">
+                      <Link href="https://lynk.id/vitademy/g7ple4kjegzq">
                         <Button>I'm Interested</Button>
                       </Link>
                     </div>
