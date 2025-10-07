@@ -5,6 +5,7 @@ import "../globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { NextIntlClientProvider } from "next-intl";
 
 const inter = Inter({
   weight: "400",
@@ -43,9 +44,11 @@ export default function UserLayout({
       {/* <ClerkProvider> */}
       <html lang="en" className={inter.className}>
         <body>
-          <Navbar />
-          {children}
-          <Footer />
+          <NextIntlClientProvider>
+            <Navbar />
+            {children}
+            <Footer />
+          </NextIntlClientProvider>
         </body>
       </html>
       {/* </ClerkProvider> */}
