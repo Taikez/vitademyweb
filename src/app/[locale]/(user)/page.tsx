@@ -11,6 +11,7 @@ import BrowseLearningModulesSection from "@/components/sections/BrowseLearningMo
 import WhatWeDoSection from "@/components/sections/WhatWeDoSection";
 import HeroSection from "@/components/sections/HeroSection";
 import HeaderLogoImage from "@/components/HeaderLogoImage";
+import MasterclassSection from "@/components/sections/MasterclassSection";
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
         <div className="px-5 md:px-20 py-10">
           <div className="flex flex-col gap-12 md:gap-24">
             <HeroSection></HeroSection>
+            <MasterclassSection></MasterclassSection>
             <WhatWeDoSection></WhatWeDoSection>
             <BrowseLearningModulesSection></BrowseLearningModulesSection>
             <WhatWeGiveSection></WhatWeGiveSection>

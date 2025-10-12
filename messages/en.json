@@ -1,6 +1,211 @@
 {
+  "Navbar": {
+    "VitaClass": "VitaClass",
+    "VitaVoice": "VitaVoice",
+    "VitaConnect": "VitaConnect",
+    "VitaStory": "VitaStory",
+    "ContactDialog": {
+      "title": "Contact Vita",
+      "description": "Got anything you want to say to us? Give us a shout!",
+      "cancel": "Cancel",
+      "send": "Send"
+    },
+    "vitaClasses": [
+      {
+        "title": "Learning Modules",
+        "href": "/learn/modules",
+        "description": "Interactive lessons that simplify math, science, and more with engaging activities."
+      },
+      {
+        "title": "Daily Quests",
+        "href": "/learn/challenges",
+        "description": "Sharpen your mind with fun quests, brain teasers, and logic puzzles."
+      },
+      {
+        "title": "Curiosity Corner",
+        "href": "/learn/curiosity",
+        "description": "Uncover mind-blowing facts, intriguing questions, and fascinating discoveries."
+      }
+    ],
+    "vitaVoices": [
+      {
+        "title": "Articles",
+        "href": "/learn/articles",
+        "description": "Explore thought-provoking insights, educational content, and inspiring stories."
+      },
+      {
+        "title": "Events",
+        "href": "/event",
+        "description": "Hands-on sessions where you can experiment, build, and learn through exciting activities."
+      }
+    ],
+    "vitaConnects": [
+      {
+        "title": "Our Products",
+        "href": "/connect/our-products",
+        "description": "Everything we offer — from brain-boosting content to cool community perks."
+      },
+      {
+        "title": "Become a Member",
+        "href": "/connect/become-a-member",
+        "description": "We have merch! 🎉 Wear your love for learning loud and proud!"
+      },
+      {
+        "title": "Career",
+        "href": "/connect/career",
+        "description": "Start your journey with us and grow your career at Vitademy."
+      }
+    ],
+    "vitaStories": [
+      {
+        "title": "About Us",
+        "href": "/story/about-us",
+        "description": "Get to know the people, passion, and purpose behind Vitademy."
+      },
+      {
+        "title": "Contact",
+        "href": "/story/contact",
+        "description": "Questions, feedback, or just want to say hi? We’re all ears."
+      },
+      {
+        "title": "FAQ",
+        "href": "/story/faq",
+        "description": "Got questions? We’ve got answers — quick, clear, and helpful."
+      }
+    ]
+  },
+
+  "HeroSection": {
+    "welcomeMessage": "Welcome to Vitademy",
+    "slogan": "The greatest space to learn.",
+    "welcomeBtn": "Let's Stay in Touch",
+
+    "badges-1": "Up-to-date Learning Space",
+    "badgesDescription-1": "Explore countless topics.",
+
+    "badges-2": "World-class Workshops",
+    "badgesDescription-2": "Hands-On Learning, Global Standards.",
+
+    "badges-3": "Brain-boosting Live Seminars",
+    "badgesDescription-3": "Ideas That Ignite Your Potential.",
+
+    "badges-4": "Ever-growing Community",
+    "badgesDescription-4": "Connect with other learners."
+  },
+
+  "MasterclassSection": {
+    "headerText": "Learn from the Best. Become the Best.",
+    "mobileHeaderText": "Masterclass: Learn from the Best. Become the Best.",
+    "masterclasses": [
+      {
+        "title": "From Theory to Reality: Skills That Will Never Be Replaced",
+        "description": "In a fast-paced and ever-changing world, some skills will always hold their value. In this masterclass, you’ll learn how to turn theory into real, practical abilities that set you apart in today’s competitive landscape.",
+        "image": "/events/from-theory-to-reality.png",
+        "link": "https://lynk.id/vitademy/o4kxoq5qd3ol",
+        "button": "Sign Me Up",
+        "layout": "image-left"
+      },
+      {
+        "title": "Foundation of Learning",
+        "description": "This is the starting point for anyone who wants to grow, adapt, and thrive in an ever-evolving world. With the right foundation, every next step becomes easier, more meaningful, and more impactful.",
+        "image": "/events/foundation-of-learning.png",
+        "link": "https://lynk.id/vitademy/875or18x34lo",
+        "button": "Start Learning",
+        "layout": "image-right"
+      },
+      {
+        "title": "One-to-Many Group Consultations",
+        "description": "Looking to network or just make new friends? Join our group consultation sessions — more than two minds coming together to discuss a variety of inspiring topics.",
+        "image": "/events/one-to-many.png",
+        "link": "https://lynk.id/vitademy/g7ple4kjegzq",
+        "button": "I'm Interested",
+        "layout": "tall"
+      },
+      {
+        "title": "One-on-One Consultations — Personalised Just for You",
+        "description": "Have something on your mind? Let's talk one-on-one. From education choices and career paths to whatever’s on your mind — we’re here to listen and help you find clarity.",
+        "image": "/events/one-on-one.png",
+        "link": "https://lynk.id/vitademy/z8zkmyvjvkqe",
+        "button": "Meet Our Mentors",
+        "layout": "image-left"
+      }
+    ]
+  },
+
+  "WhatWeDoSection": {
+    "headerText": "What We Do",
+
+    "detail-1": "Omnidirectional Learning: A 360° Approach to Education.",
+    "detailDescription-1": "Omnidirectional learning helps you learn in different ways — using fun methods, real-life examples, and creative thinking to understand things better and solve problems easily.",
+
+    "detail-2": "Connect Knowledge like Your Brain.",
+    "detailDescription-2": "Our platform connects ideas across disciplines — just like your brain does. Every topic is curated to build a seamless, interconnected understanding.",
+
+    "detail-3": "Find Your Style, Learn Your Way.",
+    "detailDescription-3": "At Vitademy, you control the pace. Our decentralised platform lets you explore, practice, and grow — anytime, anywhere.",
+
+    "subDetail-3-1": "Engaging Video Lessons",
+    "subDetail-3-2": "Easy-to-digest Text Summaries & Lecture Notes",
+    "subDetail-3-3": "Real-time Voiceover Explanations",
+    "subDetail-3-4": "Interactive Problem Sheets & Practice Modules",
+    "subDetail-3-5": "No rigid schedules. No limits. Education that adapts to you — not the other way around."
+  },
+
   "BrowseLearningModulesSection": {
     "title": "Browse Our Learning Modules",
-    "sub-title": "Our learning modules recommended for you"
+    "subTitle": "Our learning modules recommended for you",
+    "headerBtnText": "View More"
+  },
+
+  "WhatWeGiveSection": {
+    "headerText": "What We Give",
+
+    "detail-1": "Decentralised Forum. Knowledge Without Borders.",
+    "detailDescription-1": "Vitademy’s open forum lets anyone share, ask, and learn — no gatekeeping, just real, community-driven education.",
+    "detailBtnText-1": "Start Asking",
+
+    "detail-2": "VitaVerse: Online Learning Module",
+    "detailDescription-2": "Paid contents with specialized 100+ ever-growing modules for scholars, entrepreneurs, professionals, and everyone else, focusing on real-world applications and project-based assessments, based on freemium model & free 15-day trial.",
+    "detailBtnText-2": "Start Learning",
+
+    "detail-3": "VitaShop: Mathematical Merchandise",
+    "detailDescription-3": "Various mathematical supplements in 5 categories tailored to be the mascot of Vitademy.",
+    "detailBtnText-3": "Start Browsing"
+  },
+
+  "CommunitySection": {
+    "headerText": "Vitademy Community",
+    "headerSubText": "Be Part Of The Fam.",
+    "description-1": "Learning can be tough, but you’re never alone at Vitademy. Our friendly community is full of learners and mentors ready to guide you through challenges, big or small.",
+    "description-2": "Whether you're stuck on schoolwork or exploring new ideas, our members are here to help. Ask questions, share thoughts, and connect with people who want to see you succeed.",
+    "description-3": "At Vitademy, we believe learning is better together. Whenever you need support, our community is here to encourage and inspire you every step of the way.",
+    "detailBtnText": "Join the community"
+  },
+
+  "FAQSection": {
+    "headerText": "Frequently Asked Questions"
+  },
+
+  "faq": {
+    "1": {
+      "question": "What is Vitademy and how does it work?",
+      "answer": "Vitademy is a decentralised learning platform offering an extensive range of interactive resources, and community-driven discussions — all designed for you to learn at your own pace."
+    },
+    "2": {
+      "question": "Is Vitademy free to use?",
+      "answer": "We offer open access to many resources, forums, and events. Some premium features or personalised consultations may require payment."
+    },
+    "3": {
+      "question": "How is Vitademy different from other online learning platforms?",
+      "answer": "Vitademy is decentralised — meaning no central authority dictates your pace or access. You control your learning, contribute to discussions, and engage with a global community without limits."
+    },
+    "4": {
+      "question": "Can anyone contribute to Vitademy?",
+      "answer": "Yes! Our open forum allows anyone to share ideas, ask questions, or help others — creating a collaborative, community-powered learning space."
+    },
+    "5": {
+      "question": "Do I need to follow a strict schedule?",
+      "answer": "Not at all. Vitademy is built for flexibility. Learn when, where, and how you want — with resources designed to fit your rhythm."
+    }
   }
 }

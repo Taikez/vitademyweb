@@ -5,24 +5,21 @@ import { Button } from "../ui/Button";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
+import { useTranslations } from "next-intl";
 
 export default function WhatWeGiveSection() {
+  const t = useTranslations("WhatWeGiveSection");
   return (
     <div>
       <section>
-        <SectionHeader>What We Give</SectionHeader>
+        <SectionHeader>{t("headerText")}</SectionHeader>
         <div className="hidden md:grid md:grid-cols-3 md:gap-10">
           <div className="col-span-2 from-20% to-60% from-[#7efca0]/10 to-[#7efca0]/5 dark:from-[#5cff88]/20 dark:to-[#5cff88]/10 border-[#5cff88]/10 bg-gradient-to-b rounded-2xl border-2 p-10 grid grid-cols-2 gap-16">
             <div className="flex flex-col gap-10">
-              <h2 className="text-3xl font-black">
-                Decentralised Forum. Knowledge Without Borders.
-              </h2>
-              <p className="text-justify">
-                Vitademy’s open forum lets anyone share, ask, and learn — no
-                gatekeeping, just real, community-driven education.
-              </p>
+              <h2 className="text-3xl font-black">{t("detail-1")}</h2>
+              <p className="text-justify">{t("detailDescription-1")}</p>
               <Link href="/learn/modules">
-                <Button>Start Asking</Button>
+                <Button>{t("detailBtnText-1")}</Button>
               </Link>
             </div>
             <div>
@@ -38,16 +35,10 @@ export default function WhatWeGiveSection() {
           <div className="row-span-2 from-20% to-60% from-[#c7106c]/10 to-[#c7106c]/5 dark:from-[#bf2a75]/20 dark:to-[#bf2a75]/10 border-[#bf2a75]/10 bg-gradient-to-b rounded-2xl border-2 p-10">
             <div className="flex flex-col gap-20">
               <div className="flex flex-col gap-5">
-                <h2 className="text-3xl font-black">
-                  Join Events. Stay Connected.
-                </h2>
-                <p className="text-justify">
-                  Learn beyond the platform. Join our workshops, seminars, and
-                  networking events to connect with passionate learners
-                  worldwide — grow your knowledge and your network.
-                </p>
+                <h2 className="text-3xl font-black">{t("detail-2")}</h2>
+                <p className="text-justify">{t("detailDescription-2")}</p>
                 <Link href="/event/workshops">
-                  <Button>I'm Interested</Button>
+                  <Button>{t("detailBtnText-2")}</Button>
                 </Link>
               </div>
               <div>
@@ -72,15 +63,10 @@ export default function WhatWeGiveSection() {
               ></Image>
             </div>
             <div className="flex flex-col gap-10">
-              <h2 className="text-3xl font-black">
-                One-on-One Consultations. Personalised Just For You.
-              </h2>
-              <p className="text-justify">
-                Get personalised guidance to overcome challenges, set clear
-                goals, and stay on track — tailored to your learning journey.
-              </p>
+              <h2 className="text-3xl font-black">{t("detail-3")}</h2>
+              <p className="text-justify">{t("detailDescription-3")}</p>
               <Link href="">
-                <Button>Meet Our Consultors</Button>
+                <Button>{t("detailBtnText-3")}</Button>
               </Link>
             </div>
           </div>
@@ -107,15 +93,10 @@ export default function WhatWeGiveSection() {
                     height={400}
                     className="rounded-2xl"
                   />
-                  <h2 className="text-3xl font-black">
-                    🌍 Decentralised Forum. Knowledge Without Borders.
-                  </h2>
-                  <p>
-                    Vitademy’s open forum lets anyone share, ask, and learn — no
-                    gatekeeping, just real, community-driven education.
-                  </p>
+                  <h2 className="text-3xl font-black">{t("detail-1")}</h2>
+                  <p>{t("detailDescription-1")}</p>
                   <Link href="/learn/modules">
-                    <Button>Start Asking</Button>
+                    <Button>{t("detailBtnText-1")}</Button>
                   </Link>
                 </div>
               </div>
@@ -130,16 +111,10 @@ export default function WhatWeGiveSection() {
                     height={400}
                     className="rounded-2xl"
                   />
-                  <h2 className="text-3xl font-black">
-                    📅 Join Events. Stay Connected.
-                  </h2>
-                  <p>
-                    Learn beyond the platform. Join our workshops, seminars, and
-                    networking events to connect with passionate learners
-                    worldwide — grow your knowledge and your network.
-                  </p>
+                  <h2 className="text-3xl font-black">{t("detail-2")}</h2>
+                  <p>{t("detailDescription-2")}</p>
                   <Link href="/event/workshops">
-                    <Button>I'm Interested</Button>
+                    <Button>{t("detailBtnText-2")}</Button>
                   </Link>
                 </div>
               </div>
@@ -154,16 +129,10 @@ export default function WhatWeGiveSection() {
                     height={400}
                     className="rounded-2xl"
                   />
-                  <h2 className="text-3xl font-black">
-                    🎯 One-on-One Consultations. Personalised Just For You.
-                  </h2>
-                  <p className="text-justify">
-                    Get personalised guidance to overcome challenges, set clear
-                    goals, and stay on track — tailored to your learning
-                    journey.
-                  </p>
+                  <h2 className="text-3xl font-black">{t("detail-3")}</h2>
+                  <p className="text-justify">{t("detailDescription-3")}</p>
                   <Link href="">
-                    <Button>Meet Our Consultors</Button>
+                    <Button>{t("detailBtnText-3")}</Button>
                   </Link>
                 </div>
               </div>

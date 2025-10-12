@@ -3,8 +3,10 @@ import { ReactTyped } from "react-typed";
 import { Button } from "../ui/Button";
 import ContactDialog from "../ContactDialog";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 export default function HeroSection() {
+  const t = useTranslations("HeroSection");
   const [isContactOpen, setContactOpen] = useState(false);
 
   return (
@@ -19,16 +21,18 @@ export default function HeroSection() {
             backSpeed={50}
             loop
           />
-          <p className="text-center font-black text-4xl">Welcome to Vitademy</p>
+          <p className="text-center font-black text-4xl">
+            {t("welcomeMessage")}
+          </p>
           <p className="text-center text-[#7a7a7a] dark:text-[#8C8C8C]">
-            The greatest space to learn.
+            {t("slogan")}
           </p>
           <Button
             className="w-50 mt-5"
             size="lg"
             onClick={() => setContactOpen(true)}
           >
-            Let's Stay in Touch
+            {t("welcomeBtn")}
           </Button>
         </div>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-10">
@@ -59,9 +63,9 @@ export default function HeroSection() {
               </div>
               <div>
                 <p className="font-black text-md text-[#6A0DAD] dark:text-[#D8B4FE] transition-all group-hover:text-[#A855F7] dark:group-hover:text-[#e3cff8]">
-                  Up-to-date Learning Space
+                  {t("badges-1")}
                 </p>
-                <p>Explore countless topics.</p>
+                <p>{t("badgesDescription-1")}</p>
               </div>
             </div>
           </Link>
@@ -115,9 +119,9 @@ export default function HeroSection() {
               </div>
               <div>
                 <p className="font-black text-md text-[#F59E0B] transition-all group-hover:text-[#FBBF24] dark:group-hover:text-[#FCD34D]">
-                  World-class Workshops
+                  {t("badges-2")}
                 </p>
-                <p>Hands-On Learning, Global Standards.</p>
+                <p>{t("badgesDescription-2")}</p>
               </div>
             </div>
           </Link>
@@ -150,9 +154,9 @@ export default function HeroSection() {
               </div>
               <div>
                 <p className="font-black text-md text-[#10B981] transition-all group-hover:text-[#34D399] dark:group-hover:text-[#6EE7B7]">
-                  Brain-boosting Live Seminars
+                  {t("badges-3")}
                 </p>
-                <p>Ideas That Ignite Your Potential.</p>
+                <p>{t("badgesDescription-3")}</p>
               </div>
             </div>
           </Link>
@@ -190,9 +194,9 @@ export default function HeroSection() {
               </div>
               <div>
                 <p className="font-black text-md text-[#2563EB] dark:text-[#93C5FD] transition-all group-hover:text-[#3B82F6] dark:group-hover:text-[#DBEAFE]">
-                  Ever-growing Community
+                  {t("badges-4")}
                 </p>
-                <p>Connect with other learners.</p>
+                <p>{t("badgesDescription-4")}</p>
               </div>
             </div>
           </Link>

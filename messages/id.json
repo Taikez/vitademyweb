@@ -1,1 +1,211 @@
-{}
+{
+  "Navbar": {
+    "VitaClass": "VitaClass",
+    "VitaVoice": "VitaVoice",
+    "VitaConnect": "VitaConnect",
+    "VitaStory": "VitaStory",
+    "ContactDialog": {
+      "title": "Hubungi Vita",
+      "description": "Ada yang ingin kamu sampaikan? Kirimkan pesanmu di sini!",
+      "cancel": "Batal",
+      "send": "Kirim"
+    },
+    "vitaClasses": [
+      {
+        "title": "Modul Pembelajaran",
+        "href": "/learn/modules",
+        "description": "Pelajaran interaktif yang membuat matematika, sains, dan lainnya jadi lebih seru."
+      },
+      {
+        "title": "Misi Harian",
+        "href": "/learn/challenges",
+        "description": "Asah otakmu dengan tantangan seru, teka-teki logika, dan kuis harian."
+      },
+      {
+        "title": "Sudut Rasa Ingin Tahu",
+        "href": "/learn/curiosity",
+        "description": "Temukan fakta menarik, pertanyaan unik, dan pengetahuan menakjubkan."
+      }
+    ],
+    "vitaVoices": [
+      {
+        "title": "Artikel",
+        "href": "/learn/articles",
+        "description": "Baca wawasan mendalam, cerita inspiratif, dan konten edukatif menarik."
+      },
+      {
+        "title": "Acara",
+        "href": "/event",
+        "description": "Ikuti sesi seru di mana kamu bisa bereksperimen dan belajar langsung."
+      }
+    ],
+    "vitaConnects": [
+      {
+        "title": "Produk Kami",
+        "href": "/connect/our-products",
+        "description": "Semua yang kami tawarkan — dari konten edukatif hingga komunitas keren."
+      },
+      {
+        "title": "Jadi Anggota",
+        "href": "/connect/become-a-member",
+        "description": "Kami punya merch! 🎉 Tunjukkan semangat belajarmu dengan bangga!"
+      },
+      {
+        "title": "Karier",
+        "href": "/connect/career",
+        "description": "Mulai perjalanan kariermu bersama Vitademy dan berkembanglah bersama kami."
+      }
+    ],
+    "vitaStories": [
+      {
+        "title": "Tentang Kami",
+        "href": "/story/about-us",
+        "description": "Kenali orang-orang, semangat, dan tujuan di balik Vitademy."
+      },
+      {
+        "title": "Kontak",
+        "href": "/story/contact",
+        "description": "Ada pertanyaan atau saran? Kami siap mendengar."
+      },
+      {
+        "title": "FAQ",
+        "href": "/story/faq",
+        "description": "Punya pertanyaan? Kami punya jawabannya — cepat, jelas, dan membantu."
+      }
+    ]
+  },
+
+  "HeroSection": {
+    "welcomeMessage": "Selamat Datang di Vitademy",
+    "slogan": "Ruang terbaik untuk belajar.",
+    "welcomeBtn": "Mari Tetap Terhubung",
+
+    "badges-1": "Ruang Belajar Terkini",
+    "badgesDescription-1": "Jelajahi berbagai topik menarik.",
+
+    "badges-2": "Workshop Bertaraf Dunia",
+    "badgesDescription-2": "Pembelajaran langsung dengan standar global.",
+
+    "badges-3": "Seminar Langsung yang Mengasah Pikiran",
+    "badgesDescription-3": "Ide-ide yang membangkitkan potensi dirimu.",
+
+    "badges-4": "Komunitas yang Terus Berkembang",
+    "badgesDescription-4": "Terhubung dengan sesama pembelajar."
+  },
+
+  "MasterclassSection": {
+    "headerText": "Belajar dari yang Terbaik. Jadi yang Terbaik",
+    "mobileHeaderText": "Masterclass: Belajar dari yang Terbaik. Jadi yang Terbaik",
+    "masterclasses": [
+      {
+        "title": "From Theory to Reality: Skill yang Gak Akan Tergantikan",
+        "description": "Di dunia yang serba cepat dan terus berubah, ada skill yang nilainya gak akan pernah hilang. Di masterclass ini, kamu akan belajar bagaimana mengubah teori menjadi kemampuan nyata yang bisa langsung diterapkan — membuatmu unggul di tengah persaingan.",
+        "image": "/events/from-theory-to-reality.png",
+        "link": "https://lynk.id/vitademy/o4kxoq5qd3ol",
+        "button": "Daftar Sekarang",
+        "layout": "image-left"
+      },
+      {
+        "title": "Fondasi Pembelajaran",
+        "description": "Inilah titik awal bagi siapa pun yang ingin berkembang, beradaptasi, dan terus tumbuh di tengah perubahan zaman. Dengan fondasi yang tepat, setiap langkah berikutnya akan terasa lebih mudah, bermakna, dan berdampak.",
+        "image": "/events/foundation-of-learning.png",
+        "link": "https://lynk.id/vitademy/875or18x34lo",
+        "button": "Mulai Belajar",
+        "layout": "image-right"
+      },
+      {
+        "title": "One-to-Many Group Consultations",
+        "description": "Ingin memperluas koneksi atau sekadar menambah teman? Ikuti sesi konsultasi grup kami — di mana lebih dari dua pikiran digabungkan untuk mendiskusikan berbagai topik inspiratif.",
+        "image": "/events/one-to-many.png",
+        "link": "https://lynk.id/vitademy/g7ple4kjegzq",
+        "button": "Saya Tertarik",
+        "layout": "tall"
+      },
+      {
+        "title": "One-on-One Consultations — Personalisasi Hanya Untukmu",
+        "description": "Ada hal yang ingin kamu bicarakan? Yuk, ngobrol empat mata. Mulai dari pilihan kuliah, karier, sampai hal apa pun yang sedang kamu pikirkan — kami siap mendengarkan dan membantu kamu menemukan arah yang lebih jelas.",
+        "image": "/events/one-on-one.png",
+        "link": "https://lynk.id/vitademy/z8zkmyvjvkqe",
+        "button": "Temui Mentor Kami",
+        "layout": "image-left"
+      }
+    ]
+  },
+
+  "WhatWeDoSection": {
+    "headerText": "Apa yang Kami Lakukan",
+
+    "detail-1": "Pembelajaran Omnidirectional: Pendekatan 360° untuk Edukasi.",
+    "detailDescription-1": "Pembelajaran omnidirectional membantumu belajar dengan berbagai cara — menggunakan metode seru, contoh nyata, dan pola pikir kreatif agar mudah memahami konsep dan memecahkan masalah.",
+
+    "detail-2": "Hubungkan Pengetahuan Seperti Otakmu.",
+    "detailDescription-2": "Platform kami menghubungkan ide lintas disiplin — sama seperti otakmu bekerja. Setiap topik dikurasi untuk membangun pemahaman yang menyeluruh dan saling terhubung.",
+
+    "detail-3": "Temukan Gayamu, Belajar dengan Caramu Sendiri.",
+    "detailDescription-3": "Di Vitademy, kamu yang mengatur kecepatan belajar. Platform terdesentralisasi kami memungkinkanmu untuk mengeksplor, berlatih, dan berkembang — kapan saja, di mana saja.",
+
+    "subDetail-3-1": "Video Pembelajaran yang Menarik",
+    "subDetail-3-2": "Ringkasan dan Catatan Materi yang Mudah Dipahami",
+    "subDetail-3-3": "Penjelasan Suara Langsung secara Real-time",
+    "subDetail-3-4": "Lembar Latihan & Modul Interaktif",
+    "subDetail-3-5": "Tanpa jadwal kaku. Tanpa batas. Pendidikan yang menyesuaikan denganmu — bukan sebaliknya."
+  },
+
+  "BrowseLearningModulesSection": {
+    "title": "Jelajahi Modul Pembelajaran Kami",
+    "subTitle": "Modul pembelajaran yang direkomendasikan untukmu",
+    "headerBtnText": "Lihat Selengkapnya"
+  },
+
+  "WhatWeGiveSection": {
+    "headerText": "Apa yang Kami Tawarkan",
+
+    "detail-1": "Forum Terdesentralisasi. Pengetahuan Tanpa Batas.",
+    "detailDescription-1": "Forum terbuka Vitademy memungkinkan siapa pun untuk berbagi, bertanya, dan belajar — tanpa batasan, hanya edukasi yang digerakkan oleh komunitas.",
+    "detailBtnText-1": "Mulai Bertanya",
+
+    "detail-2": "VitaVerse: Modul Pembelajaran Online",
+    "detailDescription-2": "Konten berbayar dengan lebih dari 100+ modul yang terus berkembang untuk pelajar, wirausahawan, dan profesional — berfokus pada penerapan dunia nyata dan penilaian berbasis proyek, dengan model freemium & uji coba gratis 15 hari.",
+    "detailBtnText-2": "Mulai Belajar",
+
+    "detail-3": "VitaShop: Merchandise Matematis",
+    "detailDescription-3": "Berbagai suplemen bertema matematika dalam 5 kategori yang dirancang sebagai maskot Vitademy.",
+    "detailBtnText-3": "Mulai Jelajahi"
+  },
+
+  "CommunitySection": {
+    "headerText": "Komunitas Vitademy",
+    "headerSubText": "Jadilah Bagian dari Keluarga Kami.",
+    "description-1": "Belajar bisa terasa sulit, tapi kamu tidak pernah sendirian di Vitademy. Komunitas kami penuh dengan pembelajar dan mentor yang siap membimbingmu menghadapi setiap tantangan.",
+    "description-2": "Baik kamu kesulitan dengan tugas sekolah atau sedang menjelajahi ide baru, para anggota kami siap membantu. Ajukan pertanyaan, bagikan pemikiran, dan terhubung dengan orang-orang yang ingin melihatmu sukses.",
+    "description-3": "Di Vitademy, kami percaya bahwa belajar akan lebih baik jika dilakukan bersama. Saat kamu membutuhkan dukungan, komunitas kami selalu siap untuk menyemangati dan menginspirasimu di setiap langkah.",
+    "detailBtnText": "Gabung Komunitas"
+  },
+
+  "FAQSection": {
+    "headerText": "Pertanyaan yang Sering Diajukan"
+  },
+
+  "faq": {
+    "1": {
+      "question": "Apa itu Vitademy dan bagaimana cara kerjanya?",
+      "answer": "Vitademy adalah platform pembelajaran terdesentralisasi yang menawarkan berbagai sumber belajar interaktif dan diskusi komunitas — semuanya dirancang agar kamu bisa belajar dengan kecepatanmu sendiri."
+    },
+    "2": {
+      "question": "Apakah Vitademy gratis digunakan?",
+      "answer": "Kami menyediakan akses gratis ke banyak sumber daya, forum, dan acara. Beberapa fitur premium atau konsultasi personal mungkin memerlukan biaya tambahan."
+    },
+    "3": {
+      "question": "Apa yang membuat Vitademy berbeda dari platform pembelajaran lainnya?",
+      "answer": "Vitademy bersifat terdesentralisasi — tidak ada otoritas pusat yang menentukan ritme atau aksesmu. Kamu bebas belajar, berdiskusi, dan berinteraksi dengan komunitas global tanpa batas."
+    },
+    "4": {
+      "question": "Apakah siapa pun bisa berkontribusi di Vitademy?",
+      "answer": "Tentu! Forum terbuka kami memungkinkan siapa saja untuk berbagi ide, bertanya, atau membantu orang lain — menciptakan ruang belajar kolaboratif yang digerakkan oleh komunitas."
+    },
+    "5": {
+      "question": "Apakah saya harus mengikuti jadwal yang ketat?",
+      "answer": "Tidak sama sekali. Vitademy dibuat untuk fleksibilitas. Belajarlah kapan pun, di mana pun, dan dengan cara yang sesuai dengan ritmemu."
+    }
+  }
+}

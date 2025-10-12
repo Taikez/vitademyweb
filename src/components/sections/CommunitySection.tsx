@@ -3,34 +3,24 @@ import React from "react";
 import CategoryBadge from "../ui/CategoryBadge";
 import Link from "next/link";
 import { Button } from "../ui/Button";
+import { useTranslations } from "next-intl";
 
 export default function CommunitySection() {
+  const t = useTranslations("CommunitySection");
   return (
     <section>
       <div className="flex flex-col gap-5">
-        <CategoryBadge>Vitademy Community</CategoryBadge>
+        <CategoryBadge>{t("headerText")}</CategoryBadge>
         <div className="grid grid-cols-3 gap-5">
           <div className="col-span-3 md:col-span-2">
             <div className="flex flex-col gap-5">
-              <h1 className="text-6xl font-black">Be Part Of The Fam.</h1>
+              <h1 className="text-6xl font-black">{t("headerSubText")}</h1>
               <div className="flex flex-col gap-10">
-                <p className="text-xl">
-                  Learning can be tough, but you’re never alone at Vitademy. Our
-                  friendly community is full of learners and mentors ready to
-                  guide you through challenges, big or small.
-                </p>
-                <p className="text-xl">
-                  Whether you're stuck on schoolwork or exploring new ideas, our
-                  members are here to help. Ask questions, share thoughts, and
-                  connect with people who want to see you succeed.
-                </p>
-                <p className="text-xl">
-                  At Vitademy, we believe learning is better together. Whenever
-                  you need support, our community is here to encourage and
-                  inspire you every step of the way.
-                </p>
+                <p className="text-xl">{t("description-1")}</p>
+                <p className="text-xl">{t("description-2")}</p>
+                <p className="text-xl">{t("description-3")}</p>
                 <Link href="" className="text-center">
-                  <Button size="lg">Join the community</Button>
+                  <Button size="lg">{t("detailBtnText")}</Button>
                 </Link>
               </div>
             </div>
