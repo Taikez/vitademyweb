@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import Navbar from "./navbar";
-import Footer from "./footer";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 import { SessionProvider, useSession } from "next-auth/react";
 
 export default function ClientLayoutWrapper({
