@@ -4,19 +4,12 @@ import SafeHtml from "@/components/safe-html";
 import { getArticleBySlugAction } from "@/lib/actions/articleActions";
 import { getServerSession } from "next-auth";
 
-export default async function ArticleDetail({
-  params,
-}: {
-  params: { slug: string };
-}) {
+export default async function ArticleDetail({ params }: any) {
   // get user session
   const session = await getServerSession(authOptions);
   const role = session?.user?.role;
 
-  // get article by slug data
-  const { slug } = params;
-  const result = await getArticleBySlugAction(slug);
-
+  const result = await getArticleBySlugAction(params.slug);
   if (!result.success || !result.article) {
     return <div>Article not found</div>;
   }
