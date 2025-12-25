@@ -1,11 +1,16 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
 generator client {
-  provider      = "prisma-client-js"
-  output        = "../src/generated/prisma"
-  binaryTargets = ["native", "rhel-openssl-3.0.x"]
+  provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 enum Role {
@@ -14,13 +19,13 @@ enum Role {
 }
 
 model User {
-  id       String @id @default(uuid())
+  id String @id @default(uuid())
   username String @unique
-  name     String?
-  email    String @unique
-  phone    String @unique
+  name String?
+  email String @unique
+  phone String @unique
   password String
-  role     Role @default(USER)
+  role Role @default(USER)
 
   articles Article[]
 }
@@ -29,7 +34,7 @@ model Article {
   id          String   @id @default(uuid())
   title       String
   slug        String   @unique
-  shortDesc   String
+  shortDesc   String   
   content     String
   thumbnail   String?
   published   Boolean  @default(false)
@@ -40,14 +45,14 @@ model Article {
   author      User     @relation(fields: [authorId], references: [id])
   authorId    String
 
-  articleCategory   ArticleCategory @relation(fields: [articleCategoryId], references: [id])
-  articleCategoryId String
+  articleCategory    ArticleCategory @relation(fields: [articleCategoryId], references: [id])
+  articleCategoryId  String
 }
 
 model ArticleCategory {
-  id       String  @id @default(uuid())
-  name     String  @unique
-  slug     String  @unique
+  id      String     @id @default(uuid())
+  name    String     @unique
+  slug    String     @unique
 
   articles Article[]
 }

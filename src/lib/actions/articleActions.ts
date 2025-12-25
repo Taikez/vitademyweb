@@ -5,9 +5,9 @@ import prisma from "../prisma";
 import { redirect } from "next/navigation";
 import { authOptions } from "../../auth";
 import { getServerSession } from "next-auth";
-import { Prisma } from "@/generated/prisma/client";
 
 import { UTApi } from "uploadthing/server";
+import { Prisma } from "@prisma/client";
 const utapi = new UTApi();
 
 export async function createArticleCategoryAction(data: {
