@@ -12,7 +12,6 @@ import {
   SelectGroup,
   SelectLabel,
 } from "@/components/ui/select";
-import { ArticleCategory } from "@/generated/prisma/client";
 
 import { IoIosAdd } from "react-icons/io";
 import { FaTrash } from "react-icons/fa";
@@ -29,6 +28,7 @@ import {
 import { toast } from "sonner";
 import { useUploadThing } from "@/utils/uploadthing";
 import { ImageUploader } from "@/components/ui/image-uploader";
+import { ArticleCategory } from "@prisma/client";
 
 export default function CreateArticle() {
   const [pending, setPending] = useState(false);
