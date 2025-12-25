@@ -10,7 +10,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "./ui/Button";
 import { useState } from "react";
-import { ArticleCategory } from "@/generated/prisma/client";
+import { ArticleCategory } from "@prisma/client";
 
 type Props = {
   open: boolean;

@@ -2,7 +2,7 @@
 
 import ArticleListCard from "@/components/article-list-card";
 import { Button } from "@/components/ui/Button";
-import { ArticleCategory } from "@/generated/prisma/client";
+import { ArticleCategory } from "@prisma/client";
 import { getArticleCategoriesAction } from "@/lib/actions/articleActions";
 import { useTranslations } from "next-intl";
 import React, { useEffect, useState } from "react";

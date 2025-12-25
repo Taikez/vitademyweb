@@ -23,7 +23,7 @@ import {
 } from "@/components/ui/select";
 import { Button } from "./ui/Button";
 import CreateArticleCategoryDialog from "./create-article-category-dialog";
-import { ArticleCategory } from "@/generated/prisma/client";
+import { ArticleCategory } from "@prisma/client";
 
 import { IoIosAdd } from "react-icons/io";
 import { FaTrash } from "react-icons/fa";
