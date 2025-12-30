@@ -6,10 +6,11 @@
 .pnp.*
 .yarn/*
 !.yarn/patches
-!.yarn/plugins
+!.yarn/plugins 
 !.yarn/releases
 !.yarn/versions
 .env.local
+.env
 
 # testing
 /coverage
