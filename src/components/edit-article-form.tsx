@@ -10,8 +10,6 @@ import {
   SelectTrigger,
   SelectValue,
   SelectContent,
-  SelectGroup,
-  SelectLabel,
 } from "@/components/ui/select";
 import {
   editArticleAction,
@@ -28,6 +26,8 @@ import CreateArticleCategoryDialog from "./create-article-category-dialog";
 import DeleteArticleCategoryDialog from "./delete-article-category-dialog";
 import { useRouter } from "next/navigation";
 
+type ArticleStatus = "PUBLISHED" | "DRAFT";
+
 export default function EditArticleForm({ article }: { article: any }) {
   const [categories, setCategories] = useState<any[]>([]);
   const [pending, setPending] = useState(false);
@@ -35,7 +35,7 @@ export default function EditArticleForm({ article }: { article: any }) {
   const [openCreateCategory, setOpenCreateCategory] = useState(false);
   const [openDeleteCategory, setOpenDeleteCategory] = useState(false);
 
-  // 🧠 form state (prefilled)
+  // form state
   const [categoryId, setCategoryId] = useState(article.articleCategoryId);
   const [title, setTitle] = useState(article.title);
   const [shortDesc, setShortDesc] = useState(article.shortDesc ?? "");
@@ -46,21 +46,20 @@ export default function EditArticleForm({ article }: { article: any }) {
   const { startUpload } = useUploadThing("imageUploader");
   const router = useRouter();
 
-  // load categories
   useEffect(() => {
     getArticleCategoriesAction().then((res) => {
       if (res.success) setCategories(res.categories);
     });
   }, []);
-  const selectedCategory = categories?.find((c) => c.id === categoryId);
 
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
+  const selectedCategory = categories.find((c) => c.id === categoryId);
+
+  // ⭐ unified submit handler
+  async function submit(status: ArticleStatus) {
     setPending(true);
 
     let thumbnailUrl = existingThumbnail;
 
-    // upload new thumbnail if changed
     if (selectedFile) {
       const upload = await startUpload([selectedFile]);
       thumbnailUrl = upload?.[0]?.url ?? existingThumbnail;
@@ -73,6 +72,7 @@ export default function EditArticleForm({ article }: { article: any }) {
       content,
       categoryId,
       thumbnailUrl,
+      status,
     });
 
     setPending(false);
@@ -82,8 +82,17 @@ export default function EditArticleForm({ article }: { article: any }) {
       return;
     }
 
-    toast.success("Article updated!");
+    toast.success(
+      status === "PUBLISHED" ? "Article updated & published!" : "Draft saved!",
+    );
+
     router.push("/admin/manageArticle");
+  }
+
+  // ⭐ form submit = publish
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    submit("PUBLISHED");
   }
 
   return (
@@ -108,9 +117,8 @@ export default function EditArticleForm({ article }: { article: any }) {
           <div className="grid gap-5 py-5">
             {/* Category */}
             <div className="grid gap-3">
-              <Label htmlFor="category">Category</Label>
+              <Label>Category</Label>
               <div className="flex gap-2">
-                <input type="hidden" value={categoryId} />
                 <Select value={categoryId} onValueChange={setCategoryId}>
                   <SelectTrigger>
                     <SelectValue placeholder="Select category" />
@@ -126,7 +134,7 @@ export default function EditArticleForm({ article }: { article: any }) {
 
                 <Button
                   type="button"
-                  className="bg-blue-500 text-white px-5 py-3 rounded border-0"
+                  className="bg-blue-500 text-white px-5"
                   onClick={() => setOpenCreateCategory(true)}
                 >
                   <IoIosAdd />
@@ -134,7 +142,7 @@ export default function EditArticleForm({ article }: { article: any }) {
 
                 <Button
                   type="button"
-                  className="bg-red-500 text-white px-5 py-3 rounded border-0"
+                  className="bg-red-500 text-white px-5"
                   onClick={() => setOpenDeleteCategory(true)}
                 >
                   <FaTrash />
@@ -144,13 +152,13 @@ export default function EditArticleForm({ article }: { article: any }) {
 
             {/* Title */}
             <div className="grid gap-3">
-              <Label htmlFor="title">Title</Label>
+              <Label>Title</Label>
               <Input value={title} onChange={(e) => setTitle(e.target.value)} />
             </div>
 
             {/* Short Desc */}
             <div className="grid gap-3">
-              <Label htmlFor="shortDesc">Short Description</Label>
+              <Label>Short Description</Label>
               <Input
                 value={shortDesc}
                 onChange={(e) => setShortDesc(e.target.value)}
@@ -158,8 +166,8 @@ export default function EditArticleForm({ article }: { article: any }) {
             </div>
 
             {/* Thumbnail */}
-            <div className="flex flex-col items-start gap-3">
-              <Label>Upload Thumbnail</Label>
+            <div className="flex flex-col gap-3">
+              <Label>Thumbnail</Label>
 
               {existingThumbnail && (
                 <img
@@ -174,18 +182,32 @@ export default function EditArticleForm({ article }: { article: any }) {
 
             {/* Content */}
             <div className="grid gap-3">
-              <Label htmlFor="content">Content</Label>
+              <Label>Content</Label>
               <Tiptap content={content} onChange={setContent} />
             </div>
           </div>
         </div>
 
+        {/* ⭐ ACTIONS */}
         <div className="flex gap-2">
-          <Button type="submit" disabled={pending}>
-            {pending ? "Saving..." : "Save Changes"}
+          <Button
+            type="button"
+            disabled={pending}
+            onClick={() => submit("PUBLISHED")}
+          >
+            {pending ? "Saving..." : "Save & Publish"}
           </Button>
+
+          <Button
+            type="button"
+            disabled={pending}
+            onClick={() => submit("DRAFT")}
+          >
+            Save as Draft
+          </Button>
+
           <Link href="/admin/manageArticle">
-            <Button>Cancel</Button>
+            <Button disabled={pending}>Cancel</Button>
           </Link>
         </div>
       </form>

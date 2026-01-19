@@ -270,7 +270,18 @@ export async function editArticleAction(data: {
   content: string;
   categoryId: string;
   thumbnailUrl?: string | null;
+  status: "PUBLISHED" | "DRAFT";
 }) {
+  // 🔐 auth check (same as create)
+  const session = await getServerSession(authOptions);
+  if (!session) {
+    return { error: "User not authenticated! Please relog." };
+  }
+
+  const role = session.user.role;
+  if (role !== "ADMIN") return { error: "User has no authorization." };
+
+  // 🧪 validations
   if (!data.id) return { error: "Invalid article." };
   if (!data.categoryId) return { error: "Please select category!" };
   if (!data.title) return { error: "Please input title!" };
@@ -286,10 +297,10 @@ export async function editArticleAction(data: {
 
   if (!existingArticle) return { error: "Article not found." };
 
-  // delete old thumbnail if there are changes
+  // 🗑️ delete old thumbnail if changed
   if (
     existingArticle.thumbnail &&
-    existingArticle.thumbnail != data.thumbnailUrl
+    existingArticle.thumbnail !== data.thumbnailUrl
   ) {
     const fileKey = existingArticle.thumbnail.split("/f/")[1];
     if (fileKey) {
@@ -297,31 +308,42 @@ export async function editArticleAction(data: {
     }
   }
 
-  var slugify = require("slugify");
+  // 🔗 slug generation
+  const slugify = require("slugify");
   const slug = slugify(data.title, {
-    replacement: "-", // replace spaces with replacement character, defaults to `-`
-    remove: undefined, // remove characters that match regex, defaults to `undefined`
-    lower: true, // convert to lower case, defaults to `false`
-    strict: true, // strip special characters except replacement, defaults to `false`
-    locale: "vi", // language code of the locale to use
-    trim: true, // trim leading and trailing replacement chars, defaults to `true`
+    replacement: "-",
+    lower: true,
+    strict: true,
+    locale: "vi",
+    trim: true,
   });
+
+  // ⭐ status → published
+  const published = data.status === "PUBLISHED";
 
   try {
     await prisma.article.update({
       where: { id: data.id },
       data: {
-        slug: slug,
+        slug,
         title: data.title,
         shortDesc: data.shortDesc,
         content: data.content,
         thumbnail: data.thumbnailUrl,
         articleCategoryId: data.categoryId,
+        published,
       },
     });
 
+    revalidatePath("/");
+    revalidatePath("/admin/manageArticle");
+
     return { success: true };
   } catch (err: any) {
+    if (err.code === "P2002") {
+      return { error: "That slug already exists." };
+    }
+
     return { error: err.message || "Failed to update article." };
   }
 }
