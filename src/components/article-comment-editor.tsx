@@ -11,6 +11,7 @@ import {
   createArticleCommentAction,
 } from "@/lib/actions/articleActions";
 import { Placeholder } from "@tiptap/extensions";
+import Link from "next/link";
 
 type Props = {
   articleSlug: string;
@@ -40,9 +41,11 @@ export default function CommentEditor({ articleSlug, onCommentAdded }: Props) {
 
   if (!session) {
     return (
-      <div className="rounded-lg border bg-muted/40 p-4 text-sm text-muted-foreground">
-        Sign in to join the discussion
-      </div>
+      <Link href="/login">
+        <div className="rounded-lg border bg-muted/40 p-4 text-sm text-muted-foreground">
+          Sign in to join the discussion
+        </div>
+      </Link>
     );
   }
 
