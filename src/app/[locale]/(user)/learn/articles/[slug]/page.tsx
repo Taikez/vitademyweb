@@ -1,28 +1,32 @@
 import { authOptions } from "@/auth";
 import { getServerSession } from "next-auth";
-import { getArticleBySlugAction } from "@/lib/actions/articleActions";
+import {
+  getArticleBySlugAction,
+  getArticleCommentsAction,
+} from "@/lib/actions/articleActions";
 import ArticleAdminActions from "@/components/article-admin-actions";
 import ArticleContent from "@/components/article-content";
-import ArticleComment from "@/components/article-comment";
+import ArticleComments from "@/components/article-comments";
 import ArticleOthers from "@/components/article-others";
 
 export default async function ArticleDetail({
   params,
 }: {
-  params: Promise<{ slug: string; locale: string }>;
+  params: { slug: string; locale: string };
 }) {
-  const { slug } = await params;
+  const { slug } = params;
 
   const session = await getServerSession(authOptions);
   const role = session?.user?.role;
 
-  const result = await getArticleBySlugAction(slug);
-
-  if (!result.success || !result.article) {
+  const articleResult = await getArticleBySlugAction(slug);
+  if (!articleResult.success || !articleResult.article) {
     return <p>Article Not Found</p>;
   }
 
-  const article = result.article;
+  const article = articleResult.article;
+
+  const commentsResult = await getArticleCommentsAction(article.id);
 
   return (
     <div className="px-5">
@@ -30,8 +34,15 @@ export default async function ArticleDetail({
         {role === "ADMIN" && (
           <ArticleAdminActions articleId={article.id} slug={article.slug} />
         )}
+
         <ArticleContent article={article} />
-        <ArticleComment />
+
+        <ArticleComments
+          article={article}
+          initialComments={commentsResult.articleComments ?? []}
+          loading={false}
+        />
+
         <ArticleOthers />
       </div>
     </div>

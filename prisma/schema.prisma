@@ -59,6 +59,7 @@ model ArticleCategory {
 
   articles Article[]
 }
+
 model ArticleComment {
   id        String   @id @default(cuid())
 

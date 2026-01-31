@@ -163,6 +163,7 @@ export default function EditArticleForm({ article }: { article: any }) {
                 value={shortDesc}
                 onChange={(e) => setShortDesc(e.target.value)}
               />
+              x
             </div>
 
             {/* Thumbnail */}

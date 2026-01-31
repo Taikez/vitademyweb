@@ -347,3 +347,134 @@ export async function editArticleAction(data: {
     return { error: err.message || "Failed to update article." };
   }
 }
+
+// ARTICLE COMMENTS
+export type ArticleCommentsWithRelations = Prisma.ArticleCommentGetPayload<{
+  include: {
+    author: true;
+    article: true;
+  };
+}>;
+
+export async function createArticleCommentAction(data: {
+  articleSlug: string;
+  content: string;
+  rating?: number | null;
+}) {
+  const session = await getServerSession(authOptions);
+  if (!session) {
+    return { error: "Please login to leave a comment." };
+  }
+
+  if (!data.content) {
+    return { error: "Comment cannot be empty." };
+  }
+
+  const article = await prisma.article.findUnique({
+    where: { slug: data.articleSlug },
+    select: { id: true },
+  });
+
+  if (!article) {
+    return { error: "Article not found." };
+  }
+
+  try {
+    const comment = await prisma.articleComment.create({
+      data: {
+        content: data.content,
+        rating: data.rating ?? null,
+        articleId: article.id,
+        authorId: session.user.id,
+      },
+      include: {
+        author: true,
+        article: true,
+      },
+    });
+
+    revalidatePath(`/learn/articles/${data.articleSlug}`);
+
+    return {
+      success: true,
+      comment,
+    };
+  } catch (err: any) {
+    return {
+      error: err.message || "Failed to submit comment.",
+    };
+  }
+}
+
+export async function getArticleCommentsAction(articleId?: string) {
+  try {
+    const articleComments: ArticleCommentsWithRelations[] =
+      await prisma.articleComment.findMany({
+        orderBy: { createdAt: "desc" },
+        where: {
+          articleId: articleId,
+        },
+        include: {
+          author: true,
+          article: true,
+        },
+      });
+
+    return {
+      success: true,
+      articleComments,
+    };
+  } catch (error) {
+    console.error("Error fetching article comments:", error);
+
+    return {
+      success: false,
+      error: "Failed to load article comments",
+    };
+  }
+}
+
+export async function deleteArticleCommentsAction({
+  commentId,
+  articleSlug,
+}: {
+  commentId: string;
+  articleSlug: string;
+}) {
+  const session = await getServerSession(authOptions);
+  if (!session) {
+    return { error: "Please login to delete a comment." };
+  }
+
+  const articleComment = await prisma.articleComment.findUnique({
+    where: { id: commentId },
+    select: {
+      id: true,
+      authorId: true,
+    },
+  });
+
+  if (!articleComment) {
+    return { error: "Comment not found or already deleted." };
+  }
+
+  if (articleComment.authorId !== session.user.id) {
+    return { error: "You can only delete your own comment." };
+  }
+
+  try {
+    await prisma.articleComment.delete({
+      where: { id: commentId },
+    });
+
+    revalidatePath(`/learn/articles/${articleSlug}`);
+
+    return {
+      success: true,
+      deletedId: commentId,
+    };
+  } catch (err) {
+    console.error("Error deleting article comment:", err);
+    return { error: "Failed to delete comment." };
+  }
+}
