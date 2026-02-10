@@ -1,4 +1,4 @@
-import EditArticleForm from "@/components/edit-article-form";
+import EditArticleForm from "@/components/admin/edit-article-form";
 import { getArticleBySlugAction } from "@/lib/actions/articleActions";
 
 export default async function EditArticlePage({ params }: any) {

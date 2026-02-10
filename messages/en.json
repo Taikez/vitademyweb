@@ -32,6 +32,11 @@
         "title": "Manage FAQ",
         "href": "/admin/manageFAQ",
         "description": "Let's answer some questions!"
+      },
+      {
+        "title": "Manage Test",
+        "href": "/admin/manageVitaTEST",
+        "description": "Let's make some tests!"
       }
     ],
     "vitaClasses": [

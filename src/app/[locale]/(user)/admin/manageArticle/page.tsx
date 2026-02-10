@@ -1,6 +1,6 @@
 "use client";
 
-import ArticleTable from "@/components/article-table";
+import ArticleTable from "@/components/admin/article-table";
 import { Button } from "@/components/ui/Button";
 
 export default function ManageArticle() {

@@ -29,6 +29,7 @@ model User {
 
   articles Article[]
   comments        ArticleComment[]
+  vitaTests VitaTest[]
 }
 
 model Article {
@@ -78,3 +79,118 @@ model ArticleComment {
   @@index([articleId]) 
   @@index([authorId])
 }
+
+// *** VITAVitaTest NECESSITIES ***
+enum VitaTestStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+  DELETED
+}
+
+enum QuestionType {
+  SINGLE      // radio
+  MULTIPLE    // checkbox
+  SCALE       // likert (1–5)
+  TEXT        // free text
+}
+
+model VitaTest {
+  id               String        @id @default(cuid())
+  slug             String        @unique
+  title            String
+  description      String?
+  durationMinutes  Int?
+  isTimed          Boolean       @default(false)
+  status           VitaTestStatus    @default(DRAFT)
+
+  questions        VitaTestQuestion[]
+  traits           VitaTestTrait[]
+  attempts         VitaTestAttempt[]
+
+  createdById String
+  createdBy   User @relation(fields: [createdById], references: [id])
+
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+}
+
+model VitaTestQuestion {
+  id           String          @id @default(cuid())
+  VitaTestId       String
+  order        Int
+  questionText String
+  type         QuestionType
+  required     Boolean         @default(true)
+
+  VitaTest         VitaTest            @relation(fields: [VitaTestId], references: [id], onDelete: Cascade)
+  options      QuestionOption[]
+  answers      VitaTestAnswer[]
+
+  createdAt    DateTime        @default(now())
+
+  @@unique([VitaTestId, order]) // no duplicate order per VitaTest
+}
+
+model QuestionOption {
+  id           String        @id @default(cuid())
+  questionId   String
+  label        String        // "Strongly Agree"
+  value        Int           // 1–5 or any numeric scale
+  order        Int
+
+  question     VitaTestQuestion  @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  scores       OptionScore[]
+  answers      VitaTestAnswer[]
+
+  @@unique([questionId, order])
+}
+
+model VitaTestTrait {
+  id          String        @id @default(cuid())
+  VitaTestId      String
+  name        String        // "Extraversion"
+  description String?
+
+  VitaTest        VitaTest          @relation(fields: [VitaTestId], references: [id], onDelete: Cascade)
+  scores      OptionScore[]
+
+  @@unique([VitaTestId, name])
+}
+
+model OptionScore {
+  id        String       @id @default(cuid())
+  optionId  String
+  traitId   String
+  score     Int          // can be negative or positive
+
+  option    QuestionOption @relation(fields: [optionId], references: [id], onDelete: Cascade)
+  trait     VitaTestTrait      @relation(fields: [traitId], references: [id], onDelete: Cascade)
+
+  @@unique([optionId, traitId])
+}
+
+model VitaTestAttempt {
+  id          String       @id @default(cuid())
+  VitaTestId      String
+  userId      String?
+  startedAt   DateTime     @default(now())
+  completedAt DateTime?
+
+  VitaTest        VitaTest         @relation(fields: [VitaTestId], references: [id], onDelete: Cascade)
+  answers     VitaTestAnswer[]
+
+  @@index([VitaTestId])
+}
+model VitaTestAnswer {
+  id           String         @id @default(cuid())
+  attemptId    String
+  questionId   String
+  optionId     String?
+
+  attempt      VitaTestAttempt   @relation(fields: [attemptId], references: [id], onDelete: Cascade)
+  question     VitaTestQuestion  @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  option       QuestionOption? @relation(fields: [optionId], references: [id])
+
+  @@unique([attemptId, questionId])
+} 

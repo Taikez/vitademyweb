@@ -4,7 +4,7 @@ import {
   getArticleBySlugAction,
   getArticleCommentsAction,
 } from "@/lib/actions/articleActions";
-import ArticleAdminActions from "@/components/article-admin-actions";
+import ArticleAdminActions from "@/components/admin/actions/article-admin-actions";
 import ArticleContent from "@/components/article-content";
 import ArticleComments from "@/components/article-comments";
 import ArticleOthers from "@/components/article-others";

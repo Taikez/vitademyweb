@@ -10,6 +10,7 @@ import { Toaster } from "sonner";
 import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
 import { extractRouterConfig } from "uploadthing/server";
 import { ourFileRouter } from "@/app/api/uploadthing/core";
+import { ConfirmProvider } from "@/components/admin/ui/confirm-dialog";
 
 const inter = Inter({
   weight: "400",
@@ -67,7 +68,9 @@ export default async function UserLayout({ children, params }: Props) {
             enableSystem
             disableTransitionOnChange
           >
-            <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
+            <ConfirmProvider>
+              <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
+            </ConfirmProvider>
           </ThemeProvider>
         </NextIntlClientProvider>
         <Toaster />

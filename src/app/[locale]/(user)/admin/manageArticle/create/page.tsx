@@ -17,8 +17,6 @@ import { IoIosAdd } from "react-icons/io";
 import { FaTrash } from "react-icons/fa";
 import { Button } from "@/components/ui/Button";
 
-import CreateArticleCategoryDialog from "@/components/create-article-category-dialog";
-import DeleteArticleCategoryDialog from "@/components/delete-article-category-dialog";
 import Tiptap from "@/components/wysiwyg/tiptap";
 import Link from "next/link";
 import {
@@ -29,6 +27,8 @@ import { toast } from "sonner";
 import { useUploadThing } from "@/utils/uploadthing";
 import { ImageUploader } from "@/components/ui/image-uploader";
 import { ArticleCategory } from "@prisma/client";
+import CreateArticleCategoryDialog from "@/components/admin/create-article-category-dialog";
+import DeleteArticleCategoryDialog from "@/components/admin/delete-article-category-dialog";
 
 export default function CreateArticle() {
   const [pending, setPending] = useState(false);
