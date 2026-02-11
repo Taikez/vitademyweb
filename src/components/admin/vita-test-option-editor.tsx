@@ -41,6 +41,7 @@ export default function OptionEditor({ options, onChange }: Props) {
         <div key={opt.tempId} className="flex items-center gap-2">
           {/* Option label */}
           <Input
+            value={opt.label}
             onChange={(e) =>
               updateOption(opt.tempId, { label: e.target.value })
             }
