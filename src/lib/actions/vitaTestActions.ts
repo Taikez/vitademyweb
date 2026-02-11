@@ -5,6 +5,7 @@ import prisma from "../prisma";
 import { VitaTest } from "@prisma/client";
 import { authOptions } from "@/auth";
 import { revalidatePath } from "next/cache";
+import { QuestionDraft } from "@/types/vitaTEST/types";
 
 export type VitaTestWithStats = VitaTest & {
   _count: {
@@ -24,6 +25,11 @@ export async function getVitaTestsAction(): Promise<{
         createdAt: "desc",
       },
       include: {
+        questions: {
+          include: {
+            options: true,
+          },
+        },
         _count: {
           select: {
             questions: true,
@@ -53,7 +59,11 @@ export async function getVitaTestsActionById(id: string) {
         id: id,
       },
       include: {
-        questions: true,
+        questions: {
+          include: {
+            options: true,
+          },
+        },
         attempts: true,
         _count: {
           select: {
@@ -214,5 +224,98 @@ export async function updateVitaTestHeaderAction(
       success: false,
       error: "Failed to update test information",
     };
+  }
+}
+
+export async function saveVitaTestQuestionsAction(
+  vitaTestId: string,
+  questions: QuestionDraft[],
+) {
+  try {
+    // 1️⃣ Get existing DB questions
+    const existing = await prisma.vitaTestQuestion.findMany({
+      where: { VitaTestId: vitaTestId },
+      select: { id: true },
+    });
+
+    const existingIds = existing.map((q) => q.id);
+    const incomingIds = questions
+      .filter((q) => q.id)
+      .map((q) => q.id!) as string[];
+
+    // 2️⃣ Determine deletions
+    const toDelete = existingIds.filter((id) => !incomingIds.includes(id));
+
+    await prisma.$transaction(async (tx) => {
+      // 🗑 Delete removed questions
+      if (toDelete.length > 0) {
+        await tx.vitaTestQuestion.deleteMany({
+          where: {
+            id: { in: toDelete },
+          },
+        });
+      }
+
+      // 3️⃣ Upsert questions
+      for (let index = 0; index < questions.length; index++) {
+        const q = questions[index];
+
+        if (q.id) {
+          // 🔄 Update existing question
+          await tx.vitaTestQuestion.update({
+            where: { id: q.id },
+            data: {
+              order: index + 1,
+              questionText: q.questionText,
+              type: q.type,
+              required: q.required,
+            },
+          });
+
+          // Replace options completely
+          await tx.questionOption.deleteMany({
+            where: { questionId: q.id },
+          });
+
+          if (q.type !== "TEXT") {
+            await tx.questionOption.createMany({
+              data: q.options.map((opt, i) => ({
+                questionId: q.id!,
+                label: opt.label,
+                value: opt.value,
+                order: i + 1,
+              })),
+            });
+          }
+        } else {
+          // ➕ Create new question
+          const created = await tx.vitaTestQuestion.create({
+            data: {
+              VitaTestId: vitaTestId,
+              order: index + 1,
+              questionText: q.questionText,
+              type: q.type,
+              required: q.required,
+            },
+          });
+
+          if (q.type !== "TEXT") {
+            await tx.questionOption.createMany({
+              data: q.options.map((opt, i) => ({
+                questionId: created.id,
+                label: opt.label,
+                value: opt.value,
+                order: i + 1,
+              })),
+            });
+          }
+        }
+      }
+    });
+
+    return { success: true };
+  } catch (error) {
+    console.error(error);
+    return { success: false, error: "Failed to save questions" };
   }
 }

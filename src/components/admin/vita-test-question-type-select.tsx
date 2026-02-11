@@ -17,7 +17,7 @@ type Props = {
 const LABELS: Record<QuestionType, string> = {
   SINGLE: "Single choice",
   MULTIPLE: "Multiple choice",
-  SCALE: "Scale (1–5)",
+  SCALE: "Scale",
   TEXT: "Text answer",
 };
 
