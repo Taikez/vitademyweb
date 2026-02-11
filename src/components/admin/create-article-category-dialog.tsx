@@ -9,10 +9,10 @@ import {
 } from "@/components/ui/dialog";
 
 import { Input } from "@/components/ui/input";
-import { Button } from "./ui/Button";
 import { useState } from "react";
 import { createArticleCategoryAction } from "@/lib/actions/articleActions";
 import { toast } from "sonner";
+import { Button } from "../ui/Button";
 
 type Props = {
   open: boolean;

@@ -32,6 +32,11 @@
         "title": "Kelola FAQ",
         "href": "/admin/manageEvent",
         "description": "Yuk jawab pertanyaan!"
+      },
+      {
+        "title": "Kelola VitaTEST",
+        "href": "/admin/manageVitaTEST",
+        "description": "Gas buat soal-soal VitaTEST!"
       }
     ],
     "vitaClasses": [
