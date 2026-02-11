@@ -8,12 +8,12 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { Button } from "./ui/Button";
 import { useState } from "react";
 import { ArticleCategory } from "@prisma/client";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { deleteArticleCategoryAction } from "@/lib/actions/articleActions";
+import { Button } from "../ui/Button";
 
 type Props = {
   open: boolean;
@@ -36,14 +36,14 @@ export default function DeleteArticleCategoryDialog({
 
     if (!articleCategoryId) {
       toast.error(
-        "Category ID undefined! Please refresh this page, the category might already be deleted!"
+        "Category ID undefined! Please refresh this page, the category might already be deleted!",
       );
       return;
     }
 
     if (!categoryName) {
       toast.error(
-        "Category name undefined! Please refresh this page, the category might already be deleted!"
+        "Category name undefined! Please refresh this page, the category might already be deleted!",
       );
       return;
     }
@@ -51,7 +51,7 @@ export default function DeleteArticleCategoryDialog({
     // compare category name with delete confirmation
     if (deleteConfirmation != categoryName) {
       toast.error(
-        "Delete confirmation incorrect. Please input " + categoryName + "!"
+        "Delete confirmation incorrect. Please input " + categoryName + "!",
       );
       return;
     }

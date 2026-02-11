@@ -2,8 +2,9 @@
 
 import { useRouter } from "next/navigation";
 import { deleteArticleAction } from "@/lib/actions/articleActions";
-import { confirmAction } from "../ui/confirm-dialog";
 import AdminActionsButton from "../ui/admin-actions-button";
+import { useConfirm } from "../ui/confirm-dialog";
+import { toast } from "sonner";
 
 export default function ArticleAdminActions({
   articleId,
@@ -12,16 +13,27 @@ export default function ArticleAdminActions({
   articleId: string;
   slug: string;
 }) {
+  const confirm = useConfirm();
   const router = useRouter();
 
   async function handleDelete() {
-    await confirmAction({
-      message: "Are you sure you want to delete this article?",
-      action: () => deleteArticleAction(articleId),
-      successMessage: "Successfully deleted article",
-      errorMessage: "Failed to delete article",
+    const ok = await confirm({
+      title: "Delete Article",
+      description:
+        "This will delete this article and hide it from users. You can restore it later.",
+      confirmText: "Delete Article",
+      cancelText: "Cancel",
     });
 
+    if (!ok) return;
+    const res = await deleteArticleAction(articleId);
+
+    if (res?.success) {
+      toast.success("Article deleted!");
+      router.refresh();
+    } else {
+      toast.error(res?.error ?? "Failed to delete Article");
+    }
     router.push("/admin/manageArticle");
   }
 
