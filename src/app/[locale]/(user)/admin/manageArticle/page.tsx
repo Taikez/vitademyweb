@@ -2,6 +2,7 @@
 
 import ArticleTable from "@/components/admin/article-table";
 import { Button } from "@/components/ui/Button";
+import { Suspense } from "react";
 
 export default function ManageArticle() {
   return (

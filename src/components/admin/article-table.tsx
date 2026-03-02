@@ -7,16 +7,21 @@ import { AdminTable } from "./admin-data-table";
 import { TableCell, TableRow } from "../ui/table";
 import Link from "next/link";
 import ArticleAdminActions from "./actions/article-admin-actions";
+import PageLoader from "../ui/page-loader";
+import TableSkeleton from "../ui/table-skeleton";
 
 export default function ArticleTable() {
   const [articles, setArticles] = useState<ArticleWithRelations[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getArticleAction().then((res) => {
       if (res.success) setArticles(res.articles ?? []);
+      setLoading(false);
     });
   }, []);
 
+  if (loading) return <TableSkeleton rows={5} columns={8} />;
   return (
     <AdminTable
       caption="A list of your articles."

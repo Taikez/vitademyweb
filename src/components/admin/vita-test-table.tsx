@@ -8,15 +8,20 @@ import {
   VitaTestWithStats,
 } from "@/lib/actions/vitaTestActions";
 import Link from "next/link";
+import TableSkeleton from "../ui/table-skeleton";
 
 export default function VitaTestTable() {
   const [tests, setTests] = useState<VitaTestWithStats[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getVitaTestsAction().then((res) => {
       if (res.success) setTests(res.tests ?? []);
+      setLoading(false);
     });
   }, []);
+
+  if (loading) return <TableSkeleton />;
 
   return (
     <AdminTable

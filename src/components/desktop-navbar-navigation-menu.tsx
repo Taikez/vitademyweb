@@ -9,6 +9,7 @@ import {
 } from "./ui/NavigationMenu";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
+import Link from "next/link";
 
 type DesktopNavbarNavigationMenuProps = {
   user: any;
@@ -75,26 +76,41 @@ export default function DesktopNavbarNavigationMenu({
   );
 }
 
-const ListItem = React.forwardRef<
-  React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, ...props }, ref) => (
-  <li>
-    <NavigationMenuLink asChild>
-      <a
-        ref={ref}
-        className={cn(
-          "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground",
-          className
-        )}
-        {...props}
-      >
-        <div className="text-sm font-medium leading-none">{title}</div>
-        <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-          {children}
-        </p>
-      </a>
-    </NavigationMenuLink>
-  </li>
-));
+type ListItemProps =
+  | {
+      title: string;
+      href: string;
+      children: React.ReactNode;
+      className?: string;
+    }
+  | {
+      title: string;
+      href?: undefined;
+      children: React.ReactNode;
+      className?: string;
+    };
+
+const ListItem = React.forwardRef<HTMLAnchorElement, ListItemProps>(
+  ({ className, title, children, href }, ref) => (
+    <li>
+      <NavigationMenuLink asChild>
+        <Link
+          ref={ref}
+          href={href ?? "#"}
+          className={cn(
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground",
+            className,
+          )}
+        >
+          <div className="text-sm font-medium leading-none">{title}</div>
+
+          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+            {children}
+          </p>
+        </Link>
+      </NavigationMenuLink>
+    </li>
+  ),
+);
+
 ListItem.displayName = "ListItem";

@@ -3,6 +3,7 @@ import React from "react";
 import { Button } from "../ui/Button";
 import { useTranslations } from "next-intl";
 import ArticleSwiper from "../article-swiper";
+import PageLoader from "../ui/page-loader";
 
 export default function BrowseArticlesSection() {
   const t = useTranslations("BrowseArticlesSection");
