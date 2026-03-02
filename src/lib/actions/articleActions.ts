@@ -230,6 +230,38 @@ export async function getArticleBySlugAction(slug: string) {
   }
 }
 
+export async function getOtherArticlesByCategory(
+  articleSlug: string,
+  articleCategoryId: string,
+) {
+  try {
+    const article = await prisma.article.findMany({
+      where: { articleCategoryId, slug: { not: articleSlug }, published: true },
+      include: {
+        author: true,
+        articleCategory: true,
+      },
+      take: 5,
+    });
+
+    if (!article) {
+      return { success: false, error: "Article not found" };
+    }
+
+    return {
+      success: true,
+      article: article ?? null,
+    };
+  } catch (error) {
+    console.error("Error fetching articles:", error);
+
+    return {
+      success: false,
+      error: "Failed to load articles",
+    };
+  }
+}
+
 export async function deleteArticleAction(articleId: string) {
   const session = await getServerSession(authOptions);
 

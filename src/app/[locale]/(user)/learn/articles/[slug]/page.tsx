@@ -1,6 +1,7 @@
 import { authOptions } from "@/auth";
 import { getServerSession } from "next-auth";
 import {
+  getOtherArticlesByCategory,
   getArticleBySlugAction,
   getArticleCommentsAction,
 } from "@/lib/actions/articleActions";
@@ -28,6 +29,13 @@ export default async function ArticleDetail({ params }: PageProps) {
   }
 
   const article = articleResult.article;
+  const articleCategoryId = article.articleCategoryId;
+
+  const otherArticles = await getOtherArticlesByCategory(
+    slug,
+    articleCategoryId,
+  );
+
   const commentsResult = await getArticleCommentsAction(article.id);
 
   return (
@@ -45,7 +53,9 @@ export default async function ArticleDetail({ params }: PageProps) {
           loading={false}
         />
 
-        <ArticleOthers />
+        {otherArticles.article && otherArticles.article?.length > 0 && (
+          <ArticleOthers otherArticles={otherArticles.article} />
+        )}
       </div>
     </div>
   );

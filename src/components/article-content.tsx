@@ -1,5 +1,6 @@
 import SafeHtml from "./safe-html";
 import { ArticleWithRelations } from "@/lib/actions/articleActions";
+import CategoryBadge from "./ui/CategoryBadge";
 
 type Props = {
   article: ArticleWithRelations;
@@ -17,23 +18,32 @@ export default function ArticleContent({ article }: Props) {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold">{article.title}</h1>
+      <div>
+        <div className="space-y-4">
+          {article.articleCategory && (
+            <CategoryBadge>{article.articleCategory.name}</CategoryBadge>
+          )}
 
-      <div className="text-sm text-muted-foreground">
-        <h4>
-          By {article.author.name}, {formatDate(article.createdAt)}
-        </h4>
+          <h1 className="text-4xl font-bold leading-tight">{article.title}</h1>
+
+          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <span>By {article.author.name}</span>
+            <span>•</span>
+            <span>{formatDate(article.createdAt)}</span>
+          </div>
+        </div>
+
+        {/* Thumbnail */}
+        {article.thumbnail && (
+          <img
+            src={article.thumbnail}
+            alt={article.title}
+            className="my-6 rounded-xl"
+          />
+        )}
+
+        <SafeHtml html={article.content} />
       </div>
-
-      {article.thumbnail && (
-        <img
-          src={article.thumbnail}
-          alt={article.title}
-          className="my-6 rounded"
-        />
-      )}
-
-      <SafeHtml html={article.content} />
     </div>
   );
 }
