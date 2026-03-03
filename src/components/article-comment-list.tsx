@@ -5,7 +5,6 @@ import { Loader2 } from "lucide-react";
 import CommentItem from "./article-comment-item";
 import { ArticleCommentsWithRelations } from "@/lib/actions/articleActions";
 import { Button } from "./ui/Button";
-import { StringToBoolean } from "class-variance-authority/dist/types";
 
 type Props = {
   comments: ArticleCommentsWithRelations[];
