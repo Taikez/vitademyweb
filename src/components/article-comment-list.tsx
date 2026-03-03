@@ -5,16 +5,23 @@ import { Loader2 } from "lucide-react";
 import CommentItem from "./article-comment-item";
 import { ArticleCommentsWithRelations } from "@/lib/actions/articleActions";
 import { Button } from "./ui/Button";
+import { StringToBoolean } from "class-variance-authority/dist/types";
 
 type Props = {
   comments: ArticleCommentsWithRelations[];
   loading: boolean;
   onDeleted?: (id: string) => void;
+  onUpdated?: (id: string, newContent: string) => void;
 };
 
 const COMMENTS_PER_PAGE = 5;
 
-export default function CommentList({ comments, loading, onDeleted }: Props) {
+export default function CommentList({
+  comments,
+  loading,
+  onDeleted,
+  onUpdated,
+}: Props) {
   const [visibleCount, setVisibleCount] = useState(COMMENTS_PER_PAGE);
 
   if (loading) {
@@ -37,7 +44,12 @@ export default function CommentList({ comments, loading, onDeleted }: Props) {
   return (
     <div className="mt-6 space-y-6">
       {visibleComments.map((comment) => (
-        <CommentItem key={comment.id} comment={comment} onDeleted={onDeleted} />
+        <CommentItem
+          key={comment.id}
+          comment={comment}
+          onDeleted={onDeleted}
+          onUpdated={onUpdated}
+        />
       ))}
 
       {hasMore && (

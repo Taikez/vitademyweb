@@ -5,18 +5,24 @@ import { Pencil } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { formatDistanceToNow } from "date-fns";
 import { toast } from "sonner";
-import { ArticleCommentsWithRelations } from "@/lib/actions/articleActions";
+import {
+  ArticleCommentsWithRelations,
+  updateArticleCommentAction,
+} from "@/lib/actions/articleActions";
 import { deleteArticleCommentsAction } from "@/lib/actions/articleActions";
 import DeleteCommentButton from "./ui/delete-comment-btn";
+import ArticleEditCommentDialog from "./article-edit-comment-dialog";
 
 type Props = {
   comment: ArticleCommentsWithRelations;
   onDeleted?: (id: string) => void;
+  onUpdated?: (id: string, newContent: string) => void;
 };
 
-export default function CommentItem({ comment, onDeleted }: Props) {
+export default function CommentItem({ comment, onDeleted, onUpdated }: Props) {
   const { data: session } = useSession();
   const [pending, setPending] = useState(false);
+  const [editOpen, setEditOpen] = useState(false);
 
   const canDelete =
     session?.user?.id === comment.authorId || session?.user?.role === "ADMIN";
@@ -46,17 +52,18 @@ export default function CommentItem({ comment, onDeleted }: Props) {
         <div className="flex items-center justify-between gap-2 text-sm">
           <div>
             <span className="font-medium">
-              {comment.author.name ?? "Anonymous"}
+              {canEdit ? "You" : (comment.author.name ?? "Anonymous")}
             </span>
 
             <span className="text-muted-foreground">
               · {formatDistanceToNow(new Date(comment.createdAt))} ago
             </span>
           </div>
+
           <div className="flex gap-2">
             {canEdit && (
               <button
-                onClick={handleDelete}
+                onClick={() => setEditOpen(true)}
                 disabled={pending}
                 className="ml-auto text-muted-foreground hover:text-blue-600"
                 aria-label="Edit comment"
@@ -64,6 +71,7 @@ export default function CommentItem({ comment, onDeleted }: Props) {
                 <Pencil className="h-4 w-4" />
               </button>
             )}
+
             {canDelete && (
               <DeleteCommentButton onConfirm={handleDelete} pending={pending} />
             )}
@@ -75,6 +83,28 @@ export default function CommentItem({ comment, onDeleted }: Props) {
           dangerouslySetInnerHTML={{ __html: comment.content }}
         />
       </div>
+
+      {/* EDIT DIALOG */}
+      <ArticleEditCommentDialog
+        open={editOpen}
+        onOpenChange={setEditOpen}
+        comment={comment}
+        onSubmit={async (updatedContent, commentId) => {
+          const result = await updateArticleCommentAction({
+            commentId,
+            content: updatedContent,
+          });
+
+          if (result?.error) {
+            toast.error(result.error);
+            return;
+          }
+
+          toast.success("Comment updated");
+
+          onUpdated?.(commentId, updatedContent);
+        }}
+      />
     </div>
   );
 }

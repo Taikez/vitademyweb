@@ -510,3 +510,37 @@ export async function deleteArticleCommentsAction({
     return { error: "Failed to delete comment." };
   }
 }
+
+export async function updateArticleCommentAction({
+  commentId,
+  content,
+}: {
+  commentId: string;
+  content: string;
+}) {
+  const session = await getServerSession(authOptions);
+
+  if (!session?.user?.id) {
+    return { error: "Unauthorized" };
+  }
+
+  const comment = await prisma.articleComment.findUnique({
+    where: { id: commentId },
+  });
+
+  if (!comment) {
+    return { error: "Comment not found" };
+  }
+
+  // Only author can edit
+  if (comment.authorId !== session.user.id) {
+    return { error: "You cannot edit this comment" };
+  }
+
+  const updated = await prisma.articleComment.update({
+    where: { id: commentId },
+    data: { content },
+  });
+
+  return { success: true, comment: updated };
+}

@@ -24,6 +24,11 @@ export default function ArticleComments({
     setComments((prev) => prev.filter((c) => c.id !== id));
   }
 
+  function handleCommentUpdated(id: string, newContent: string) {
+    setComments((prev) =>
+      prev.map((c) => (c.id === id ? { ...c, content: newContent } : c)),
+    );
+  }
   return (
     <section className="mt-12 border-t pt-8">
       <h2 className="text-lg font-semibold mb-6">
@@ -42,6 +47,7 @@ export default function ArticleComments({
         comments={comments}
         loading={loading}
         onDeleted={handleCommentDeleted}
+        onUpdated={handleCommentUpdated}
       />
     </section>
   );
